@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray_bright"
+    android:orientation="vertical">
+
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp">
+    </com.toughegg.teorderpo.view.MyTopActionBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/rest_name_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Chuan Yang Ji(Balestier)"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/rest_address_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="432 Balestier Road #01-434 Public Mansion"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_gray_deep_l"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        android:paddingLeft="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="@dimen/userinfo_textview_width"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_userinfo_resttime"/>
+
+            <TextView
+                android:id="@+id/rest_time_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09:00-22:00"
+                android:textColor="@color/color_blue_submit"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_gray_deep_l"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="@dimen/userinfo_textview_width"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_userinfo_userid"/>
+
+            <TextView
+                android:id="@+id/rest_userid_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="102"
+                android:textColor="@color/color_blue_submit"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_gray_deep_l"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="@dimen/userinfo_textview_width"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_userinfo_serviceip"/>
+
+            <TextView
+                android:id="@+id/service_ip_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="192.168.5.125"
+                android:textColor="@color/color_blue_submit"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_gray_deep_l"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="@dimen/userinfo_textview_width"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_userinfo_version"/>
+
+            <TextView
+                android:id="@+id/app_version_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.0.0.13"
+                android:textColor="@color/color_blue_submit"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_gray_deep_l"/>
+</LinearLayout>

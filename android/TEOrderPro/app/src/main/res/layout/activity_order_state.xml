@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_action_bar"
+        android:layout_margin="10dp"
+        android:background="@color/color_blue_deep"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/activity_order_state_order_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_state_str_submitsuccess"
+            android:textColor="@color/color_white"/>
+
+        <ImageView
+            android:id="@+id/activity_order_state_order_state_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="@dimen/activity_all_padding_top"
+            android:background="@drawable/order_state"/>
+
+        <View
+            android:id="@+id/dashed_horizontal_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dashed_horizontal_line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="@dimen/activity_all_padding_top_double"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/activity_order_state_info_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_state_str_type"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/text_size_small"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_state_order_type_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_all_padding_left"
+                        android:text="@string/activity_order_state_dinner_in"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/text_size_small"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="@dimen/activity_all_padding_top"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/activity_order_state_info_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_state_str_order_number"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/text_size_small"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_state_order_number_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_all_padding_left"
+                        android:text="00011221231"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/text_size_small"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_all_padding_top_double"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="@dimen/activity_all_padding_top"
+                    android:orientation="horizontal">
+                    <!--下单时间 -->
+                    <TextView
+                        android:layout_width="@dimen/activity_order_state_info_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_state_str_order_time"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/text_size_small"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_state_order_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_all_padding_left"
+                        android:minWidth="100dp"
+                        android:text="2015-08-12  17:00"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/text_size_small"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 等待时间-->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dashed_vertical_line"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:id="@+id/time_linearlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="@dimen/activity_all_padding_top_double"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_state_str_wait_time"
+                    android:textColor="@color/gray"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_all_padding_top_double"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/wait_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"/>
+
+                    <TextView
+                        android:id="@+id/min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/wait_time"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/wait_time"
+                        android:text="@string/order_state_button_str_mins"
+                        android:textColor="@color/white"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/activity_order_state_back_main_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_blue_deep"
+        android:text="@string/order_state_button_str_toback"
+        android:textColor="@color/color_white"/>
+</RelativeLayout>

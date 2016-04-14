@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- ActionBar-->
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/color_gray_bright"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="@string/app_lang_hint"
+        android:textColor="@color/color_gray_dark"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_gray_light"/>
+
+    <ListView
+        android:id="@+id/select_language_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:scrollbars="none"/>
+</LinearLayout>

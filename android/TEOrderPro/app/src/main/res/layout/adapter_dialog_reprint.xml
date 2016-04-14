@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapter_dialog_reprint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:paddingLeft="10dp">
+
+    <ImageView
+        android:id="@+id/adapter_dialog_reprint_hint"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/dialog_reprint_ok"/>
+
+    <TextView
+        android:id="@+id/adapter_dialog_reprint_textview"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_toLeftOf="@+id/adapter_dialog_reprint_checkbox"
+        android:gravity="center"
+        android:text="@string/activity_add_printer_receipt"/>
+
+    <ImageView
+        android:id="@+id/adapter_dialog_reprint_checkbox"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:src="@drawable/dialog_reprint_changed"/>
+
+</RelativeLayout>

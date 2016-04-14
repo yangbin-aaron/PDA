@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ActionBar-->
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"/>
+
+    <View
+        android:id="@+id/action_order_linear_top"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="45dp"
+        android:background="@color/color_gray_deep"/>
+
+    <!--中间-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/action_order_linear_bottom"
+        android:layout_below="@+id/action_order_linear_top">
+
+
+        <ListView
+            android:id="@+id/action_order_category_listView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/color_gray_bright"
+            android:fastScrollEnabled="false"
+            android:descendantFocusability="blocksDescendants"
+            android:scrollbars="none"/>
+
+        <com.toughegg.andytools.view.fixedlistheader.PinnedHeaderListView
+            android:id="@+id/action_order_dish_listView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@color/white"
+            android:scrollbars="none"/>
+    </LinearLayout>
+
+    <!-- 底部-->
+    <View
+        android:id="@+id/action_order_linear_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:background="@color/color_gray_deep"/>
+
+    <com.toughegg.teorderpo.view.MyBottomBar
+        android:id="@+id/myBottomBar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

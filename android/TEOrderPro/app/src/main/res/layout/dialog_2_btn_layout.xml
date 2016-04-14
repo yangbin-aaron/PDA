@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/dialog_util_loading_layout"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/dialog_rectangle_style">
+
+        <TextView
+            android:id="@+id/dialog_title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/app_name"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_below="@+id/dialog_title_textView"
+            android:background="@color/color_gray_light"/>
+
+        <TextView
+            android:id="@+id/dialog_message_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/dialog_btn_latout"
+            android:layout_below="@+id/dialog_title_textView"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="message"/>
+
+        <ScrollView
+            android:id="@+id/dialog_messagelist_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/dialog_btn_latout"
+            android:layout_below="@+id/dialog_title_textView"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/dialog_messagelist_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1、测试更新\n2、测试更新toughegg.andytools.update.ACTION_PROGRESS\n3、测试更新"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/dialog_btn_latout"
+            android:background="@color/color_gray_light"/>
+
+        <LinearLayout
+            android:id="@+id/dialog_btn_latout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/dialog_left_textview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/app_cancel"
+                android:textColor="@color/color_blue_deep"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/color_gray_light"/>
+
+            <TextView
+                android:id="@+id/dialog_right_textview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/app_confirm"
+                android:textColor="@color/color_blue_deep"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

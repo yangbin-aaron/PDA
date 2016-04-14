@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 圆角 -->
+    <corners
+        android:bottomLeftRadius="8dip"
+        android:bottomRightRadius="8dip"
+        android:topLeftRadius="8dip"
+        android:topRightRadius="8dip" />
+    <!-- 渐变 -->
+    <!-- <gradient android:startColor ="#ffffff" android:endColor="#000000" android:angle ="45"/> -->
+
+
+    <!-- 填充 -->
+    <solid android:color="@color/white" />
+
+    <gradient
+        android:startColor="#ffffff"
+        android:endColor="#ffffff"
+        android:centerColor="#ffffff"
+        android:angle="270"
+        />
+
+</shape>
+

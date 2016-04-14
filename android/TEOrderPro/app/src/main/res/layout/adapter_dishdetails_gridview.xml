@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/adapter_dishdetails_gridview_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_blue_deep"
+    android:padding="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/adapter_dishdetails_gridview_bottom_layout">
+
+        <ImageView
+            android:id="@+id/adapter_dishdetails_gridview_select_imageview"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/dishdetails_minus"/>
+
+        <TextView
+            android:id="@+id/adapter_dishdetails_gridview_name_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="-4dp"
+            android:layout_toLeftOf="@id/adapter_dishdetails_gridview_select_imageview"
+            android:ellipsize="end"
+            android:text="芝麻汤圆"
+            android:textColor="@color/color_white"
+            android:textSize="12sp"/>
+        <!--</LinearLayout>-->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/adapter_dishdetails_gridview_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/adapter_dishdetails_gridview_price_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$ 0.5"
+            android:textColor="@color/color_orange_light"/>
+
+        <TextView
+            android:id="@+id/adapter_dishdetails_gridview_copies_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
+            android:text="x1"
+            android:textColor="@color/color_orange_light"/>
+    </RelativeLayout>
+</RelativeLayout>

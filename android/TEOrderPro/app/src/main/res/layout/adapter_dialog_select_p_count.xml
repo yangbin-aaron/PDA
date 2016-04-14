@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/adapter_dialog_select_p_count_textview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selectpeople_blue_btn_color"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="1"
+    android:textColor="@color/color_blue_deep"
+    android:textSize="20sp">
+
+</TextView>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_search_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- ActionBar-->
+    <RelativeLayout
+        android:id="@+id/search_top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:background="@color/color_blue_deep"
+        android:orientation="horizontal">
+
+        <!--左边部分-->
+        <RelativeLayout
+            android:id="@+id/search_left_layout"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/title_touch_color"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/actionbar_top_left_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_btn"
+                android:visibility="visible"/>
+        </RelativeLayout>
+
+        <!--中间部分-->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_toRightOf="@id/search_left_layout"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <EditText
+                android:id="@+id/search_edit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="100dip"
+                android:background="@null"
+                android:hint="@string/activity_search_edittext_hint"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/color_blue_light"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="45dp"
+            android:layout_toRightOf="@id/search_left_layout"
+            android:background="@color/color_blue_light"
+            />
+
+        <!-- 右边部分 -->
+        <RelativeLayout
+            android:id="@+id/search_right_layout"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/title_touch_color"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/clean_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dip"
+                android:background="@drawable/clean"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/search_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/activity_select_people_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <!-- 桌号-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/select_people_tablename"
+            android:textColor="@color/color_blue_deep"/>
+
+        <TextView
+            android:id="@+id/activity_select_people_table_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="T1"
+            android:textColor="@color/color_blue_deep"/>
+    </LinearLayout>
+
+    <!-- 人数-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/select_people_count"
+            android:textColor="@color/color_blue_deep"/>
+
+        <TextView
+            android:id="@+id/activity_select_people_maxp_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="4"
+            android:textColor="@color/color_blue_deep"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/color_gray_light"/>
+
+    <!-- 按键区域-->
+    <GridView
+        android:id="@+id/activity_select_people_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:horizontalSpacing="10dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_gray_light"/>
+
+    <!-- 输入其他人数-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/activity_select_people_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/activity_select_people_confirm_textview"
+            android:background="@drawable/round_edittext"
+            android:gravity="center_vertical"
+            android:hint="@string/select_people_other"
+            android:inputType="number"
+            android:maxLength="4"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/activity_select_people_confirm_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/selectpeople_blue_btn_color"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/app_confirm"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+</LinearLayout>

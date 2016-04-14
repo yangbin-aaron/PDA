@@ -1,0 +1,184 @@
+<resources>
+    <!-- App相关string-->
+    <string name="app_name">點菜寶</string>
+    <string name="actionbar_left_str">&lt;</string>
+    <string name="app_network_is_not_connected">請檢查您的網絡連接</string>
+    <string name="app_service_is_not_connected">服務器斷開</string>
+    <string name="app_net_date_error">網路數據异常</string>
+    <string name="app_please_wait">請稍等...</string>
+    <string name="app_load_fail">加載失敗</string>
+    <string name="app_confirm">確定</string>
+    <string name="app_cancel">取消</string>
+    <string name="app_logout">確定退出該用戶嗎？</string>
+    <string name="app_error_debug">很抱歉，程式出現異常。</string>
+    <string name="app_switch_service">切換服務器</string>
+    <string name="app_sync_complete">完成</string>
+    <string name="app_re_download">重新下载</string>
+    <string name="app_stop_update">取消更新</string>
+    <string name="app_left"> 左右</string>
+    <string name="app_download_version">正在下載更新</string>
+
+    <!-- 下拉刷新 -->
+    <string name="refresh_remain">釋放即可刷新&#8230;</string>
+    <string name="refresh_start">好嘞，正在刷新&#8230;</string>
+    <string name="refresh_end">你敢放，我就敢刷新&#8230;</string>
+
+    <!-- WelcomeActivity相关string-->
+    <string name="welcome_pda_str">點菜寶&#160;&#160;&#160;快又好</string>
+
+    <!-- MainActivity相关string-->
+    <string name="spinner_str_0">全部餐桌</string>
+    <string name="spinner_str_1">已買單</string>
+    <string name="spinner_str_2">已入座</string>
+    <string name="spinner_str_3">空閒餐桌</string>
+    <string name="main_button_str_table">桌面管理</string>
+    <string name="main_button_str_takeaway">打包</string>
+    <string name="main_button_str_message">消息</string>
+    <string name="main_button_str_setting">設定</string>
+    <string name="main_right_top_str">拼桌</string>
+
+    <!-- SelectPeopleActivity相关-->
+    <string name="select_people_title_str">選擇人數</string>
+    <string name="select_people_tablename">預定桌號:</string>
+    <string name="select_people_count">建議人數:</string>
+    <string name="select_people_other">輸入其他人數</string>
+
+    <!-- OrderActivity相关String-->
+    <string name="actionbar_order_title_str">菜單</string>
+    <string name="order_str_assortment">分類</string>
+    <string name="order_button_str_next">下一步</string>
+    <string name="order_button_str_total">份數：</string>
+    <string name="order_company_str_cash"> 金額:</string>
+    <string name="order_get_catrgory_fail">獲取菜單信息失敗</string>
+    <string name="order_dialog_message_cancelorder">親，您確定取消點菜嗎？</string>
+    <string name="order_dialog_message_donnotorder">親，您還沒有點菜哦</string>
+
+    <!-- OrderDetailActivity相关String-->
+    <string name="order_detail_str_table_info">餐桌信息</string>
+    <string name="actionbar_order_detail_title_str">訂單詳情</string>
+    <string name="order_detail_str_orderno">訂單編號：</string>
+    <string name="order_detail_str_singletime">下單時間：</string>
+    <string name="order_detail_str_tablename">餐桌：</string>
+    <string name="order_detail_str_peoplecount">人數：</string>
+    <string name="order_detail_company_str_bit">位</string>
+    <string name="order_detail_str_dishdetail">菜品詳情</string>
+    <string name="order_detail_str_total">其他稅費</string>
+    <string name="order_detail_str_including_tax">（包含稅金）</string>
+    <string name="order_detail_str_subtotal">菜品合計</string>
+    <string name="order_detail_str_discountamount">折扣</string>
+    <string name="order_detail_str_consumptiontax">GST</string>
+    <string name="order_detail_str_round">Round</string>
+    <string name="order_detail_str_addprice">加價:</string>
+    <string name="order_detail_str_discount">折扣:</string>
+    <string name="order_detail_str_servicetax">服務稅</string>
+    <string name="order_detail_button_str_confirmsubmit">確認提交</string>
+    <string name="order_detail_str_remarks">備注:</string>
+    <string name="order_detail_str_print_order">打印訂單</string>
+    <string name="order_detail_str_reprint">重印</string>
+    <string name="order_detail_str_notice">注意</string>
+    <string name="order_detail_str_failure">打印失敗，請重新指向</string>
+    <string name="order_detail_str_setip">請設定打印IP</string>
+
+    <!-- OrderNetDetailActivity相关String-->
+    <string name="order_net_detail_str_due">應付</string>
+    <string name="order_net_detail_str_amt">已付</string>
+    <string name="order_net_detail_str_order_nvalid">訂單已經失效</string>
+    <string name="order_net_detail_str_edit_order">修改訂單</string>
+
+    <!-- OrderDishActivity相关String-->
+    <string name="actionbar_order_dish_title_str">菜品詳情</string>
+    <string name="order_dish_str_dishoptions">菜品選項</string>
+    <string name="order_dish_str_remarks">備注</string>
+    <string name="order_dish_str_addprice">加價:</string>
+    <string name="order_dish_str_total">合計:</string>
+    <string name="order_dish_button_str_save">保存</string>
+    <string name="order_dish_button_str_update">修改</string>
+
+    <!-- ShoppingCartActivity相关String-->
+    <string name="actionbar_shoppingcart_title_str">購物車</string>
+    <string name="shoppingcart_total">總價:</string>
+    <string name="shoppingcart_button_srt_next">下一步</string>
+
+    <!-- OrderStateActivity相关String-->
+    <string name="actionbar_order_state_title_str">訂單狀態</string>
+    <string name="order_state_str_type">類型:</string>
+    <string name="order_state_str_order_number">編號:</string>
+    <string name="order_state_str_order_time">時間:</string>
+    <string name="order_state_str_submitsuccess">訂單已成功提交</string>
+    <string name="order_state_button_str_toback">返回主頁</string>
+    <string name="order_state_str_wait_time">等待時間</string>
+    <string name="order_state_button_str_mins">mins</string>
+
+    <!--LoginActivity 相关-->
+    <string name="activity_login_top_bar_title">Tough Egg</string>
+    <string name="activity_login_merchant_id_edit_hint">商戶ID</string>
+    <string name="activity_login_user_id_edit_hint">用戶ID</string>
+    <string name="activity_login_password_edit_hint">密碼</string>
+    <string name="activity_login_login_btn">登入</string>
+    <string name="activity_login_login_version_str">版本號:</string>
+    <string name="activity_login_merchantid_cannot_be_empty">商戶ID不能為空</string>
+    <string name="activity_login_userid_cannot_be_empty">用戶ID不能為空</string>
+    <string name="activity_login_password_cannot_be_empty">密碼不能為空</string>
+    <string name="activity_login_merchantid_must_digits">商戶ID必須為4位數位</string>
+    <string name="activity_login_userid_must_digits">用戶ID必須為3位數位</string>
+    <string name="activity_login_password_must_digits">密碼必須為6位數位</string>
+    <string name="activity_login_loading">正在登入...</string>
+    <string name="activity_login_fail">登入失敗</string>
+    <string name="activity_login_setip_null">請設定服務器IP地址</string>
+    <string name="activity_login_setip_error">請輸入正確的IP地址</string>
+    <string name="activity_login_setip_re">該IP地址已經存在</string>
+
+    <!--应该更新相关-->
+    <string name="activity_update_app">版本陞級</string>
+    <string name="activity_update_later">以後更新</string>
+    <string name="activity_update_now">馬上更新</string>
+    <string name="activity_refresh">刷新</string>
+    <string name="activity_havenot_newversion">暫時沒有新版本!</string>
+
+    <!--SettingActivity 设置 相关-->
+    <string name="activity_setting_top_bar_title">設定</string>
+    <string name="activity_setting_add_printer">添加打印機</string>
+    <string name="activity_setting_sync_info">同步數據</string>
+    <string name="activity_setting_sync_template">更新模板</string>
+    <string name="activity_setting_select_lang">語言選擇</string>
+    <string name="activity_setting_userinfo">帳戶信息</string>
+    <string name="activity_setting_checkUpdate">檢查更新</string>
+    <string name="activity_setting_login_out_btn">登出</string>
+    <string name="activity_setting_please_sync_info">請先同步數據</string>
+    <string name="activity_setting_syncinfo_success">數據同步成功</string>
+    <string name="activity_setting_synctemplate_success">模板更新成功</string>
+    <string name="activity_setting_syncinfo_fail">數據同步失敗</string>
+    <string name="activity_setting_synctemplate_fail">模板更新失敗</string>
+
+    <!--AddPrinterActivity 添加打印机-->
+    <string name="activity_add_printer_topbar_title">添加打印機</string>
+    <string name="activity_add_printer_receipt">收據</string>
+    <string name="activity_add_printer_kitchen">廚房1</string>
+    <string name="activity_add_printer_cash">廚房2</string>
+    <string name="activity_add_printer_counter">吧台</string>
+    <string name="activity_add_printer_delete">删除</string>
+
+    <!--SearchActivity 添加打印机-->
+    <string name="activity_search_edittext_hint">搜索菜品</string>
+
+    <!--order state-->
+    <string name="activity_order_state_dinner_in">堂食</string>
+    <string name="activity_order_state_take_away">打包</string>
+
+    <!--bottomBar-->
+    <string name="view_myBottomBar_confirm_order">確認訂單</string>
+    <string name="view_myBottomBar_total_price">總價:</string>
+
+    <!-- 语言-->
+    <string name="app_lang_hint">請選擇兩種常用語言</string>
+    <string name="app_lang_error">只能選擇2種語言</string>
+    <string name="app_lang_en">英語</string>
+    <string name="app_lang_zh">簡體中文</string>
+    <string name="app_lang_zh_tw">繁體中文</string>
+
+    <!-- 账户信息-->
+    <string name="activity_userinfo_resttime">營業時間:</string>
+    <string name="activity_userinfo_userid">當前帳戶:</string>
+    <string name="activity_userinfo_serviceip">本機IP:</string>
+    <string name="activity_userinfo_version">版本號:</string>
+</resources>

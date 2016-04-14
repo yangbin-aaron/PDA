@@ -1,0 +1,4 @@
+<resources>
+    <!-- UserInfo-->
+    <dimen name="userinfo_textview_width">80dp</dimen>
+</resources>

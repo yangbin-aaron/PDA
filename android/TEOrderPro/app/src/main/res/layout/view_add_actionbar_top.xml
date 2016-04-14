@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/color_blue_deep">
+
+    <!-- 左边部分 -->
+    <RelativeLayout
+        android:id="@+id/actionbar_top_left_layout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/title_touch_color">
+
+        <TextView
+            android:id="@+id/actionbar_top_left_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:textSize="30sp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/actionbar_top_left_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+
+    <!-- 中间标题部分 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp">
+
+        <TextView
+            android:id="@+id/actionbar_top_center_title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
+
+        <Spinner
+            android:id="@+id/actionbar_top_center_title_spinner"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/spinner_background"
+            android:visibility="invisible">
+
+        </Spinner>
+    </RelativeLayout>
+
+    <!-- 右边部分 -->
+    <RelativeLayout
+        android:id="@+id/actionbar_top_right_layout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/title_touch_color">
+
+        <TextView
+            android:id="@+id/actionbar_top_right_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="拼桌"
+            android:textColor="@color/color_white"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/actionbar_top_right_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/find_edit"
+        android:layout_width="60dip"
+        android:layout_height="30dip"
+        android:layout_marginLeft="100dip"
+        android:background="@drawable/round_edittext"
+        android:visibility="gone"/>
+
+</RelativeLayout>

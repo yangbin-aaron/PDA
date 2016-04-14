@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ActionBar-->
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"/>
+
+    <!-- 菜单-->
+    <com.toughegg.andytools.view.swipemenu.SwipeMenuListView
+        android:id="@+id/activity_shoppingcart_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/myBottomBar"
+        android:layout_below="@+id/top_action_bar"/>
+    <!-- 下面部分-->
+    <com.toughegg.teorderpo.view.MyBottomBar
+        android:id="@+id/myBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

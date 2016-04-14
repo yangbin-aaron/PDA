@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/gridview_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black">
+
+    <RelativeLayout
+        android:id="@+id/gridview_layout_sub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:background="@color/color_orange_deep"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/gridview_table_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T1"
+            android:textColor="@color/color_white"
+            android:textSize="24sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gridview_table_name_textView"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:gravity="right|center_vertical">
+
+            <ImageView
+                android:id="@+id/gridview_table_to_name_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:src="@drawable/table_arrow_white"/>
+
+            <TextView
+                android:id="@+id/gridview_table_to_name_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="T1"
+                android:textColor="@color/color_white"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/gridview_people_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="2/10"
+            android:textColor="@color/color_white"/>
+
+        <TextView
+            android:id="@+id/gridview_money_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="$78.66"
+            android:textColor="@color/color_white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/show_select_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/translucent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/check_select_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/select_normal"/>
+    </RelativeLayout>
+</RelativeLayout>

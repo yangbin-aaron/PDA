@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <!--添加打印机布局 -->
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="42dp"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--receipt 1 部分  收据-->
+            <LinearLayout
+                android:id="@+id/activity_add_printer_receipt_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="@dimen/activity_all_padding_right"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/setting_addprinter"/>
+
+                <TextView
+                    android:id="@+id/activity_add_printer_receipt_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:minWidth="70dp"
+                    android:text="@string/activity_add_printer_receipt"/>
+
+                <RelativeLayout
+                    android:id="@+id/activity_add_printer_receipt_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginRight="@dimen/activity_all_padding_right"
+                    android:layout_marginTop="2dp">
+
+                    <EditText
+                        android:id="@+id/activity_add_printer_receipt_edit_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/edittext_hight"
+                        android:layout_toLeftOf="@+id/activity_add_printer_receipt_add_tv"
+                        android:background="@drawable/round_edittext"
+                        android:digits="1234567890."
+                        android:hint="192.168.1.1"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_middle"/>
+
+                    <TextView
+                        android:id="@+id/activity_add_printer_receipt_add_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="-2dp"
+                        android:background="@drawable/title_touch_color"
+                        android:gravity="center"
+                        android:minWidth="60dp"
+                        android:padding="4dp"
+                        android:text="@string/app_confirm"
+                        android:textColor="@color/color_white"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/activity_add_printer_receipt_line"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight_small"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+            <com.toughegg.andytools.view.swipemenu.SwipeMenuListView
+                android:id="@+id/activity_add_printer_receipt_items_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:scrollbars="none"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/activity_add_printer_receipt_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+            <!--厨房1 -->
+            <LinearLayout
+                android:id="@+id/activity_add_printer_kitchen_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="@dimen/activity_all_padding_right"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/setting_addprinter"/>
+
+                <TextView
+                    android:id="@+id/activity_add_printer_kitchen_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:minWidth="70dp"
+                    android:text="@string/activity_add_printer_kitchen"/>
+
+                <RelativeLayout
+                    android:id="@+id/activity_add_printer_kitchen_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginRight="@dimen/activity_all_padding_right"
+                    android:layout_marginTop="2dp">
+
+                    <EditText
+                        android:id="@+id/activity_add_printer_kitchen_edit_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/edittext_hight"
+                        android:layout_toLeftOf="@+id/activity_add_printer_kitchen_add_tv"
+                        android:background="@drawable/round_edittext"
+                        android:digits="1234567890."
+                        android:hint="192.168.1.1"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_middle"/>
+
+                    <TextView
+                        android:id="@+id/activity_add_printer_kitchen_add_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="-2dp"
+                        android:background="@drawable/title_touch_color"
+                        android:gravity="center"
+                        android:minWidth="60dp"
+                        android:padding="4dp"
+                        android:text="@string/app_confirm"
+                        android:textColor="@color/color_white"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/activity_add_printer_kitchen_line"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight_small"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+            <com.toughegg.andytools.view.swipemenu.SwipeMenuListView
+                android:id="@+id/activity_add_printer_kitchen_items_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:scrollbars="none"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/activity_add_printer_kitchen_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+
+            <!--厨房2 部分-->
+            <LinearLayout
+                android:id="@+id/activity_add_printer_cash_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="@dimen/activity_all_padding_right"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/setting_addprinter"/>
+
+                <TextView
+                    android:id="@+id/activity_add_printer_cash_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:minWidth="70dp"
+                    android:text="@string/activity_add_printer_cash"/>
+
+                <RelativeLayout
+                    android:id="@+id/activity_add_printer_cash_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginRight="@dimen/activity_all_padding_right"
+                    android:layout_marginTop="2dp">
+
+                    <EditText
+                        android:id="@+id/activity_add_printer_cash_edit_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/edittext_hight"
+                        android:layout_toLeftOf="@+id/activity_add_printer_cash_add_tv"
+                        android:background="@drawable/round_edittext"
+                        android:digits="1234567890."
+                        android:hint="192.168.1.1"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_middle"/>
+
+                    <TextView
+                        android:id="@+id/activity_add_printer_cash_add_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/title_touch_color"
+                        android:gravity="center"
+                        android:minWidth="60dp"
+                        android:padding="-2dp"
+                        android:text="@string/app_confirm"
+                        android:textColor="@color/color_white"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/activity_add_printer_cash_line"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight_small"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+            <com.toughegg.andytools.view.swipemenu.SwipeMenuListView
+                android:id="@+id/activity_add_printer_cash_items_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:scrollbars="none"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/activity_add_printer_cash_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+            <!--吧台部分-->
+            <LinearLayout
+                android:id="@+id/activity_add_printer_counter_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="@dimen/activity_all_padding_right"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/setting_addprinter"/>
+
+                <TextView
+                    android:id="@+id/activity_add_printer_counter_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:minWidth="70dp"
+                    android:text="@string/activity_add_printer_counter"/>
+
+                <RelativeLayout
+                    android:id="@+id/activity_add_printer_counter_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginRight="@dimen/activity_all_padding_right"
+                    android:layout_marginTop="2dp">
+
+                    <EditText
+                        android:id="@+id/activity_add_printer_counter_edit_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/edittext_hight"
+                        android:layout_toLeftOf="@+id/activity_add_printer_counter_add_tv"
+                        android:background="@drawable/round_edittext"
+                        android:digits="1234567890."
+                        android:hint="192.168.1.1"
+                        android:padding="4dp"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_middle"/>
+
+                    <TextView
+                        android:id="@+id/activity_add_printer_counter_add_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/title_touch_color"
+                        android:gravity="center"
+                        android:minWidth="60dp"
+                        android:padding="-2dp"
+                        android:text="@string/app_confirm"
+                        android:textColor="@color/color_white"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/activity_add_printer_counter_line"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/view_hight_small"
+                android:background="@color/color_gray_deep_l"
+                android:visibility="gone"/>
+
+            <com.toughegg.andytools.view.swipemenu.SwipeMenuListView
+                android:id="@+id/activity_add_printer_counter_items_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:scrollbars="none"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

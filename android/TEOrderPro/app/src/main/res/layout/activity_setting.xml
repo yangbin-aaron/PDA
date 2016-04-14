@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <!--设置界面-->
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height">
+    </com.toughegg.teorderpo.view.MyTopActionBar>
+    <!--添加打印机-->
+    <RelativeLayout
+        android:id="@+id/activity_setting_add_printer_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_action_bar"
+        android:background="@drawable/white_btn_color"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_all_padding_bottom"
+        android:paddingLeft="@dimen/activity_all_padding_left"
+        android:paddingRight="@dimen/activity_all_padding_right"
+        android:paddingTop="@dimen/activity_all_padding_top"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/addprinter_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/setting_addprinter"/>
+
+        <TextView
+            android:id="@+id/activity_setting_add_printer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/addprinter_img"
+            android:text="@string/activity_setting_add_printer"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_middle"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right_navigation"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_setting_add_printer_layout"
+        android:background="@color/color_gray_deep"
+        android:visibility="visible"/>
+
+    <!--同步Info-->
+    <RelativeLayout
+        android:id="@+id/activity_setting_sync_info_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_setting_add_printer_layout"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/white_btn_color"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_all_padding_bottom"
+        android:paddingLeft="@dimen/activity_all_padding_left"
+        android:paddingRight="@dimen/activity_all_padding_right"
+        android:paddingTop="@dimen/activity_all_padding_top">
+
+        <ImageView
+            android:id="@+id/syncinfo_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/setting_syncinfo"/>
+
+        <TextView
+            android:id="@+id/activity_setting_sync_info_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/syncinfo_img"
+            android:text="@string/activity_setting_sync_info"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_middle"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_setting_sync_info_layout"
+        android:background="@color/color_gray_deep"/>
+
+    <!--同步模板-->
+    <RelativeLayout
+        android:id="@+id/activity_setting_sync_template_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_setting_sync_info_layout"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/white_btn_color"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_all_padding_bottom"
+        android:paddingLeft="@dimen/activity_all_padding_left"
+        android:paddingRight="@dimen/activity_all_padding_right"
+        android:paddingTop="@dimen/activity_all_padding_top">
+
+        <ImageView
+            android:id="@+id/synctemplate_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/setting_synctemplate"/>
+
+        <TextView
+            android:id="@+id/activity_setting_sync_template_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/synctemplate_img"
+            android:text="@string/activity_setting_sync_template"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_middle"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_setting_sync_template_layout"
+        android:background="@color/color_gray_deep"/>
+
+    <!--语言设置:暂不开放-->
+    <RelativeLayout
+        android:id="@+id/activity_setting_select_lang_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_setting_sync_template_layout"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/white_btn_color"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_all_padding_bottom"
+        android:paddingLeft="@dimen/activity_all_padding_left"
+        android:paddingRight="@dimen/activity_all_padding_right"
+        android:paddingTop="@dimen/activity_all_padding_top"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/selectlang_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/setting_selectlang"/>
+
+        <TextView
+            android:id="@+id/activity_setting_select_lang_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/selectlang_img"
+            android:text="@string/activity_setting_select_lang"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_middle"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right_navigation"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_setting_select_lang_layout"
+        android:background="@color/color_gray_deep"
+        android:visibility="gone"/>
+
+    <!--账户信息-->
+    <RelativeLayout
+        android:id="@+id/activity_setting_userinfo_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_setting_select_lang_layout"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/white_btn_color"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_all_padding_bottom"
+        android:paddingLeft="@dimen/activity_all_padding_left"
+        android:paddingRight="@dimen/activity_all_padding_right"
+        android:paddingTop="@dimen/activity_all_padding_top">
+
+        <ImageView
+            android:id="@+id/userinfo_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/setting_userinfo"/>
+
+        <TextView
+            android:id="@+id/activity_setting_userinfo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/userinfo_img"
+            android:text="@string/activity_setting_userinfo"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_middle"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right_navigation"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_setting_userinfo_layout"
+        android:background="@color/color_gray_deep"
+        android:visibility="visible"/>
+
+    <!--检查更新-->
+    <RelativeLayout
+        android:id="@+id/activity_setting_checkUpdate_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_setting_userinfo_layout"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/white_btn_color"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_all_padding_bottom"
+        android:paddingLeft="@dimen/activity_all_padding_left"
+        android:paddingRight="@dimen/activity_all_padding_right"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/checkUpdate_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/activity_all_padding_top"
+            android:src="@drawable/setting_appupdate"/>
+
+        <TextView
+            android:id="@+id/activity_setting_checkUpdate_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/activity_all_padding_top"
+            android:layout_toRightOf="@+id/checkUpdate_img"
+            android:text="@string/activity_setting_checkUpdate"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_middle"/>
+
+        <LinearLayout
+            android:id="@+id/activity_setting_haveupdate_LL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/activity_setting_checkUpdate_tv"
+            android:gravity="bottom"
+            android:minHeight="20dp">
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/circle_red_point"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text="New"
+                android:textColor="@color/color_green_deep"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_setting_checkUpdate_layout"
+        android:background="@color/color_gray_deep"
+        android:visibility="visible"/>
+
+    <!--退出登录-->
+    <Button
+        android:id="@+id/activity_seeting_login_out_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_below="@+id/activity_setting_checkUpdate_layout"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/title_touch_color"
+        android:text="@string/activity_setting_login_out_btn"
+        android:textColor="@color/color_white"/>
+
+</RelativeLayout>

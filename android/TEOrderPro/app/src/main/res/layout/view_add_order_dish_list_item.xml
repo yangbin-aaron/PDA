@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_all_padding_left"
+    android:paddingTop="6dp">
+
+    <!--订单详情布局中     菜品详情listItem布局-->
+    <RelativeLayout
+        android:id="@+id/dish_layout_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/dish_delete_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/color_black"
+            android:visibility="invisible"/>
+        <!-- -->
+        <TextView
+            android:id="@+id/dish_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A2"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/view_add_order_dish_list_item_name_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toLeftOf="@+id/copies_layout"
+            android:layout_toRightOf="@+id/dish_code"
+            android:text="香辣羊排"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/view_add_order_dish_list_item_price_textView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="$ 11"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:id="@+id/copies_layout"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/view_add_order_dish_list_item_price_textView">
+
+            <TextView
+                android:id="@+id/x_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="x"/>
+
+            <TextView
+                android:id="@+id/view_add_order_dish_list_item_part_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="1"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/label_layout_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dish_layout_line"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_add_order_dish_list_item_remak_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_layout_id"
+        android:layout_marginBottom="6dp"
+        android:paddingLeft="20dp">
+
+        <TextView
+            android:id="@+id/view_add_order_dish_list_item_remak_str"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_detail_str_remarks"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/view_add_order_dish_list_item_remak_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/view_add_order_dish_list_item_remak_layout"
+        android:layout_marginBottom="6dp"
+        android:background="@android:color/darker_gray"/>
+</RelativeLayout>

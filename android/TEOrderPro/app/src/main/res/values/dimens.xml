@@ -1,0 +1,40 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 所有布局需要离边界的距离-->
+    <dimen name="activity_all_padding_left">10dp</dimen>
+    <dimen name="activity_all_padding_left_double">20dp</dimen>
+    <dimen name="activity_all_padding_right">10dp</dimen>
+    <dimen name="activity_all_padding_top">12dp</dimen>
+    <dimen name="activity_all_padding_bottom">10dp</dimen>
+    <dimen name="activity_all_padding_top_double">30dp</dimen>
+    <dimen name="activity_order_state_indo_padding_left">40dp</dimen>
+    <!-- ActionBar的高度-->
+    <dimen name="action_bar_height">45dp</dimen>
+    <!--订单状态文字宽度-->
+    <dimen name="activity_order_state_info_width">50dp</dimen>
+    <!--文字大小-->
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_middle">16sp</dimen>
+    <dimen name="text_size_big">18sp</dimen>
+    <!--编辑框-->
+    <dimen name="edittext_text_sise">14sp</dimen>
+    <dimen name="edittext_hight">40dp</dimen>
+    <!--横线高度-->
+    <dimen name="view_hight_small">1dp</dimen>
+    <dimen name="view_hight">6dp</dimen>
+    <!-- 按钮高度-->
+    <dimen name="btn_height">40dp</dimen>
+    <!-- 菜品标签GridView高度-->
+    <dimen name="activity_order_dish_gridview_height">160dp</dimen>
+
+    <dimen name="text_show_qr">14sp</dimen>
+
+    <!--order detail destance-->
+    <dimen name="order_detail_dish_name_width">100dp</dimen>
+
+    <!-- UserInfo-->
+    <dimen name="userinfo_textview_width">140dp</dimen>
+</resources>

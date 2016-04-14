@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- deep深色 light浅色 dark暗色 亮色bright-->
+    <color name="color_blue_dark">#0060FF</color>
+    <!-- 深蓝色-->
+    <color name="color_blue_deep">#334F8D</color>
+    <!--消息蓝色-->
+    <color name="color_blue_message">#3B5998</color>
+    <!-- 浅蓝色-->
+    <color name="color_blue_light">#ff73abff</color>
+    <!--提交订单蓝色-->
+    <color name="color_blue_submit">#61a0f9</color>
+    <!-- 白色-->
+    <color name="color_white">#FFFFFF</color>
+    <!-- 黑色-->
+    <color name="color_black">#000000</color>
+    <!-- 浅黑色-->
+    <color name="color_black_light">#1A1B1B</color>
+    <!-- 浅橙色-->
+    <color name="color_orange_light">#ffc000</color>
+    <!-- 深橙色-->
+    <color name="color_orange_deep">#EFB00A</color>
+    <!-- 暗灰色-->
+    <color name="color_gray_dark">#6E6E6E</color>
+    <!-- 深灰色-->
+    <color name="color_gray_deep">#8E8E8E</color>
+    <!-- 深灰色-->
+    <color name="color_gray_deep_l">#DDDDDD</color>
+    <!-- 浅灰色-->
+    <color name="color_gray_light">#E8E8E9</color>
+    <!-- 亮灰色-->
+    <color name="color_gray_bright">#EBEBEB</color>
+    <!-- 红色-->
+    <color name="color_red">#FF0000</color>
+    <!-- 深红色-->
+    <color name="color_red_deep">#B22222</color>
+    <!-- 黄色-->
+    <color name="color_yellow">#EEEE00</color>
+    <!--深黄色-->
+    <color name="color_yellow_dark">#ffd800</color>
+    <!-- 浅紫色-->
+    <color name="color_purple_light">#ffee278b</color>
+    <!-- 深粉色-->
+    <color name="color_pink_deep">#ff3333</color>
+    <!-- 浅粉色-->
+    <color name="color_pink_light">#ff7373</color>
+    <!-- 暗绿色-->
+    <color name="color_green_dark">#337614</color>
+    <!-- 深绿色-->
+    <color name="color_green_deep">#4cb21d</color>
+    <!-- 选择人数按钮的颜色-->
+    <color name="color_blue_1">#E5EAF2</color>
+    <color name="color_blue_2">#C3D2EA</color>
+    <color name="color_blue_3">#B9BDCC</color>
+
+</resources>

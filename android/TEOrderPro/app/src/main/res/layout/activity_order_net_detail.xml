@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray_light"
+    android:orientation="vertical">
+
+    <!-- TopActionBar -->
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"/>
+
+    <!--中间部分：订单详情布局-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_action_bar"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- 订单编号-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单编号"
+                    android:textColor="@color/color_blue_deep"/>
+
+                <TextView
+                    android:id="@+id/activity_order_no_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="201510141646"/>
+            </LinearLayout>
+
+            <!-- 桌号人数title-->
+            <TextView
+                android:id="@+id/activity_order_net_detail_table_textview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="35dip"
+                android:paddingLeft="10dip"
+                android:text="@string/order_detail_str_table_info"
+                android:textColor="@color/color_gray_dark"
+                android:textSize="14sp"/>
+
+            <!-- 餐桌号和人数-->
+            <LinearLayout
+                android:id="@+id/activity_order_net_detail_table_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="55dp"
+                android:orientation="vertical"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/activity_all_padding_left"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_str_tablename"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detatil_tablename_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A01"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_str_peoplecount"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detatil_peoplecount_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="30dp"
+                        android:text="5"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!--菜品列表-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="35dip"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:text="@string/order_detail_str_dishdetail"
+                    android:textColor="@color/color_gray_dark"
+                    android:textSize="14sp"/>
+
+                <LinearLayout
+                    android:id="@+id/activity_order_net_detail_list_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp">
+                </LinearLayout>
+            </LinearLayout>
+            <!--菜品价目详情-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_gray_light"
+                    android:gravity="center_vertical"
+                    android:minHeight="35dp"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:text="@string/order_detail_str_total"
+                    android:textColor="@color/color_gray_dark"
+                    android:textSize="14sp"/>
+
+
+                <!-- 菜品合计-->
+                <RelativeLayout
+                    android:id="@+id/sub_total_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right"
+                    android:paddingTop="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_detail_str_subtotal"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_subtotal_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </RelativeLayout>
+
+                <!-- 折扣-->
+                <RelativeLayout
+                    android:id="@+id/discountamount_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right"
+                    android:paddingTop="2dp">
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_other_textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_detail_str_discountamount"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_discountamountshow_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/activity_order_net_detail_other_textView2"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_discountamount_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </RelativeLayout>
+
+                <!-- 服务税-->
+                <RelativeLayout
+                    android:id="@+id/service_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right"
+                    android:paddingTop="2dp">
+
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_other_textView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_detail_str_servicetax"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_servicetaxshow_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/activity_order_net_detail_other_textView0"
+                        android:text="111"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_servicetax_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
+
+                <!-- 消费税-->
+                <RelativeLayout
+                    android:id="@+id/gst_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right"
+                    android:paddingTop="2dp">
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_other_textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_detail_str_consumptiontax"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_gstshow_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/activity_order_net_detail_other_textView1"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_consumptiontax_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
+
+                <!--  Round-->
+                <RelativeLayout
+                    android:id="@+id/round_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@color/white"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right"
+                    android:paddingTop="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_detail_str_round"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_round_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
+
+
+                <!-- 税后金额-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right">
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_total_str_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@+id/activity_order_net_detail_total_textView"
+                        android:text="@string/order_net_detail_str_due"
+                        android:textColor="@color/color_red"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textColor="@color/color_red"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
+
+                <!-- 修改订单按钮-->
+                <TextView
+                    android:id="@+id/activity_order_net_detail_modify_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/blue_btn_color_net_defail"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/order_net_detail_str_edit_order"
+                    android:textColor="@color/color_blue_deep"
+                    android:textSize="20sp"/>
+
+                <!-- 重新打印订单-->
+                <TextView
+                    android:id="@+id/activity_order_net_detail_reprint_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/blue_btn_color_net_defail"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="重新打印订单"
+                    android:textColor="@color/color_blue_deep"
+                    android:textSize="20sp"
+                    android:visibility="invisible"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

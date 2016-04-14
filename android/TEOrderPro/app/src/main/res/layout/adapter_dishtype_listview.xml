@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red">
+
+    <TextView
+        android:id="@+id/adapter_disgtype_listview_dishname_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="4dp"
+        android:background="@color/color_gray_bright"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dip"
+        android:paddingLeft="2dp"
+        android:paddingTop="10dip"
+        android:text="中餐"
+        android:textColor="@color/color_gray_dark"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/message_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="5dip"
+        android:background="@drawable/round_message_blue"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        />
+</RelativeLayout>

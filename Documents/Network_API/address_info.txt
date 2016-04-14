@@ -1,0 +1,8 @@
+{
+    "result":true,
+    "data":{
+        "postal_code":"018935",
+        "address":"5 Straits View"
+    },
+    "message":"Request success."
+}

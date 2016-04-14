@@ -1,0 +1,26 @@
+二维码action参数：
+    充值 action:"member_deposit_topup"
+    扫桌：action:"table_scan"
+    订单详情：action:"order_detail"
+
+
+充值：
+{
+   "action":"member_deposit_topup",
+   "memberid":"12",
+   "topupvalue":"100",
+   "datetime":"2015-1-1 11:12:20"
+}
+
+餐桌：
+{
+   "action":"table_scan",
+   "restaurant_id":"1",
+   "table_id":"27"
+}
+
+订单详情：
+{
+    action:"order_detail",
+    "order_id":"111"
+}

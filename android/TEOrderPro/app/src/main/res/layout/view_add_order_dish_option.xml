@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:paddingBottom="4dp"
+    android:paddingLeft="@dimen/activity_all_padding_left"
+    android:paddingRight="@dimen/activity_all_padding_right"
+    android:paddingTop="4dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/view_add_order_dish_optionname_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1斤半"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/view_add_order_dish_optionprice_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="$ 11.00"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/view_add_order_dish_optionselect_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/change_lan_en"/>
+</RelativeLayout>

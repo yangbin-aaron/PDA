@@ -1,0 +1,190 @@
+<resources>
+    <!-- App相关string-->
+    <string name="app_name">PDA</string>
+    <string name="actionbar_left_str">&lt;</string>
+    <string name="app_network_is_not_connected">Check Internet connection</string>
+    <string name="app_service_is_not_connected">Server disconnect</string>
+    <string name="app_net_date_error">Net Date Error</string>
+    <string name="app_please_wait">Loading...</string>
+    <string name="app_load_fail">Loading Failed</string>
+    <string name="app_confirm">Confirm</string>
+    <string name="app_cancel">Cancel</string>
+    <string name="app_logout">Logout huh?</string>
+    <string name="app_error_debug">Sorry, abnormal procedures.</string>
+    <string name="app_switch_service">Switch Server</string>
+    <string name="app_sync_complete">Complete</string>
+    <string name="app_re_download">Re-Download</string>
+    <string name="app_stop_update">Stop</string>
+    <string name="app_left"> left</string>
+    <string name="app_download_version">Downloading...</string>
+
+    <!-- 下拉刷新 -->
+    <string name="refresh_remain">Release to refresh</string>
+    <string name="refresh_start">Refreshing&#8230;</string>
+    <string name="refresh_end">Refreshed</string>
+
+    <!-- WelcomeActivity相关string-->
+    <string name="welcome_pda_str">点菜宝&#160;&#160;&#160;快又好</string>
+
+    <!-- MainActivity相关string-->
+    <string name="spinner_str_0">All Tables</string>
+    <string name="spinner_str_1">Paid</string>
+    <string name="spinner_str_2">Occupied</string>
+    <string name="spinner_str_3">Vacant</string>
+    <string name="main_button_str_table">Tables</string>
+    <string name="main_button_str_takeaway">TakeAway</string>
+    <string name="main_button_str_message">Message</string>
+    <string name="main_button_str_setting">Setting</string>
+    <string name="main_right_top_str">Mer</string>
+
+    <!-- SelectPeopleActivity相关-->
+    <string name="select_people_title_str">No. Of Pax</string>
+    <string name="select_people_tablename">Table No.:</string>
+    <string name="select_people_count">Suggest: </string>
+    <string name="select_people_other">Others</string>
+
+    <!-- OrderActivity相关String-->
+    <string name="actionbar_order_title_str">Menu</string>
+    <string name="order_str_assortment">Category</string>
+    <string name="order_button_str_next">Next</string>
+    <string name="order_button_str_total">Dishes:</string>
+    <string name="order_company_str_cash"> Amt:</string>
+    <string name="order_get_catrgory_fail">Loading Menu info failed</string>
+    <string name="order_dialog_message_cancelorder">Back to Table Management?</string>
+    <string name="order_dialog_message_donnotorder">You haven\'t ordered anything yet!</string>
+
+    <!-- OrderDetailActivity相关String-->
+    <string name="order_detail_str_table_info">Table Info</string>
+    <string name="actionbar_order_detail_title_str">Order Details</string>
+    <string name="order_detail_str_orderno">Order No.:</string>
+    <string name="order_detail_str_singletime">Time：</string>
+    <string name="order_detail_str_tablename">Table No.：</string>
+    <string name="order_detail_str_peoplecount">Pax：</string>
+    <string name="order_detail_company_str_bit">Pax</string>
+    <string name="order_detail_str_dishdetail">List</string>
+    <string name="order_detail_str_total">Others</string>
+    <string name="order_detail_str_including_tax">(Tax included)</string>
+    <string name="order_detail_str_subtotal">Sub Total</string>
+    <string name="order_detail_str_discountamount">Disc</string>
+    <string name="order_detail_str_consumptiontax">GST</string>
+    <string name="order_detail_str_round">Round</string>
+    <string name="order_detail_str_addprice">Add Price:</string>
+    <string name="order_detail_str_discount">Discount:</string>
+    <string name="order_detail_str_servicetax">Service Charge</string>
+    <string name="order_detail_button_str_confirmsubmit">Submit</string>
+    <string name="order_detail_str_remarks">remark:</string>
+    <string name="order_detail_str_print_order">Send Order</string>
+    <string name="order_detail_str_reprint">Re-print</string>
+    <string name="order_detail_str_notice">Notice</string>
+    <string name="order_detail_str_failure">Print failure,please try again</string>
+    <string name="order_detail_str_setip">Please set up printer IP addresses</string>
+
+    <!-- OrderNetDetailActivity相关String-->
+    <string name="order_net_detail_str_due">Total Due</string>
+    <string name="order_net_detail_str_amt">AMT Paid</string>
+    <string name="order_net_detail_str_order_nvalid">This order has expired.</string>
+    <string name="order_net_detail_str_edit_order">Edit Order</string>
+
+    <!-- OrderDishActivity相关String-->
+    <string name="actionbar_order_dish_title_str">Dish Details</string>
+    <string name="order_dish_str_dishoptions">Options</string>
+    <string name="order_dish_str_remarks">Remark</string>
+    <string name="order_dish_str_addprice">Add:</string>
+    <string name="order_dish_str_total">Total:</string>
+    <string name="order_dish_button_str_save">Save</string>
+    <string name="order_dish_button_str_update">Modify</string>
+
+    <!-- ShoppingCartActivity相关String-->
+    <string name="actionbar_shoppingcart_title_str">Cart</string>
+    <string name="shoppingcart_total">Total Amount:</string>
+    <string name="shoppingcart_button_srt_next">Next</string>
+
+    <!-- OrderStateActivity相关String-->
+    <string name="actionbar_order_state_title_str">Order Status</string>
+    <string name="order_state_str_type">Type:</string>
+    <string name="order_state_str_order_number">No.:</string>
+    <string name="order_state_str_order_time">Time:</string>
+    <string name="order_state_str_submitsuccess">Order has been successfully submitted</string>
+    <string name="order_state_button_str_toback">Go Home</string>
+    <string name="order_state_str_wait_time">Latency time</string>
+    <string name="order_state_button_str_mins">mins</string>
+
+    <!--LoginActivity 相关-->
+    <string name="activity_login_top_bar_title">Tough Egg</string>
+    <string name="activity_login_merchant_id_edit_hint">Merchant ID</string>
+    <string name="activity_login_user_id_edit_hint">User ID</string>
+    <string name="activity_login_password_edit_hint">Password</string>
+    <string name="activity_login_login_btn">Login</string>
+    <string name="activity_login_login_version_str">Version:</string>
+    <string name="activity_login_merchantid_cannot_be_empty">MID Cannot be empty</string>
+    <string name="activity_login_userid_cannot_be_empty">UID Cannot be empty</string>
+    <string name="activity_login_password_cannot_be_empty">Please enter password</string>
+    <string name="activity_login_merchantid_must_digits">MID has to be in 4 digits</string>
+    <string name="activity_login_userid_must_digits">UID has to be in 3 digits</string>
+    <string name="activity_login_password_must_digits">Password has to be in 6 digits</string>
+    <string name="activity_login_loading">Logining...</string>
+    <string name="activity_login_fail">Login failed</string>
+    <string name="activity_login_setip_null">Please set IP of the service.</string>
+    <string name="activity_login_setip_error">Please enter the correct IP.</string>
+    <string name="activity_login_setip_re">The IP address already exists.</string>
+
+    <!--应该更新相关-->
+    <string name="activity_update_app">Version Upgrade</string>
+    <string name="activity_update_later">Later</string>
+    <string name="activity_update_now">Now</string>
+    <string name="activity_refresh">Refresh</string>
+    <string name="activity_havenot_newversion">No new version!</string>
+
+    <!--SettingActivity 设置 相关-->
+    <string name="activity_setting_top_bar_title">Setting</string>
+    <string name="activity_setting_add_printer">Add Printer</string>
+    <string name="activity_setting_sync_info">Sync-info</string>
+    <string name="activity_setting_sync_template">Sync Template</string>
+    <string name="activity_setting_select_lang">Select Language</string>
+    <string name="activity_setting_userinfo">User Info</string>
+    <string name="activity_setting_checkUpdate">Check for Update</string>
+    <string name="activity_setting_checkUpdate_latest">The current version is for the latest version</string>
+    <string name="activity_setting_login_out_btn">Log Out</string>
+    <string name="activity_setting_please_sync_info">Please Sync-info</string>
+    <string name="activity_setting_syncinfo_success">Sync-info Success</string>
+    <string name="activity_setting_synctemplate_success">Template Sync Success</string>
+    <string name="activity_setting_syncinfo_fail">Sync-info Failed</string>
+    <string name="activity_setting_synctemplate_fail">Template Sync Failed</string>
+
+    <!--AddPrinterActivity 添加打印机-->
+    <string name="activity_add_printer_topbar_title">Add Printer</string>
+    <string name="activity_add_printer_receipt">Receipt</string>
+    <string name="activity_add_printer_kitchen">Kitchen1</string>
+    <string name="activity_add_printer_cash">Kitchen2</string>
+    <string name="activity_add_printer_counter">Bar</string>
+    <string name="activity_add_printer_delete">Delete</string>
+
+    <!--SearchActivity 添加打印机-->
+    <string name="activity_search_edittext_hint">Search</string>
+
+    <!--order state-->
+    <string name="activity_order_state_dinner_in">Dine-in</string>
+    <string name="activity_order_state_take_away">TakeAway</string>
+
+    <!--bottomBar-->
+    <string name="view_myBottomBar_confirm_order">Confirm order</string>
+    <string name="view_myBottomBar_total_price">Total：</string>
+
+    <!--QR message-->
+    <string name="qr_message_1">Thank you &amp; Have a nice day !</string>
+    <string name="qr_message_2">Payment made at</string>
+    <string name="qr_message_3">Powered by ToughEgg</string>
+
+    <!-- 语言-->
+    <string name="app_lang_hint">Please select 2 commonly used language</string>
+    <string name="app_lang_error">Only 2 languages</string>
+    <string name="app_lang_en">English</string>
+    <string name="app_lang_zh">Chinese,Simplified</string>
+    <string name="app_lang_zh_tw">Chinese,Traditional</string>
+
+    <!-- 账户信息-->
+    <string name="activity_userinfo_resttime">Opening Hours:</string>
+    <string name="activity_userinfo_userid">Current Account:</string>
+    <string name="activity_userinfo_serviceip">IP Adress:</string>
+    <string name="activity_userinfo_version">Version:</string>
+</resources>

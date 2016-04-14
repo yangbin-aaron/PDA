@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 红色-->
+    <color name="red">#FF0000</color>
+    <!-- 花白色 -->
+    <color name="dimgray">#696969</color>
+    <!-- 暗灰色 -->
+    <color name="dimgrey">#696969</color>
+    <!-- 暗灰色 -->
+    <!-- 半透明 -->
+    <color name="translucent">#b0000000</color>
+    <!-- 半透明 -->
+    <color name="translucent_x">#0a000000</color>
+    <!-- 橘色-->
+    <color name="orange">#ff5000</color>
+    <!-- 深橘色-->
+    <color name="orange_dark">#ff7000</color>
+    <!-- 蓝色-->
+    <color name="dialog_blue">#60bae3</color>
+    <color name="dialog_blue_dark">#1292cd</color>
+    <!-- 灰色-->
+    <color name="gray">#BEBEBE</color>
+    <!--白色-->
+    <color name="white">#FFFFFF</color>
+    <!--黑色-->
+    <color name="black">#000000</color>
+</resources>

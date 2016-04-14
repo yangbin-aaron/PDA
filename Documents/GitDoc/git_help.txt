@@ -1,0 +1,37 @@
+添加：
+git add --all .
+添加当前目录及其子目录下所有文件和文件夹。
+
+提交：
+git commit -am "提交的注视"
+
+重要目录和配置文件：
+.git/       git的本地仓库。
+.gitignore  git对于目录中一些不想提交的过程文件的约束定义。
+不要修改上述两个文件夹或文件中的任何内容
+
+
+git 和 svn 的区别：
+git的commit是在本地的，svn必须online。
+
+
+向服务器提交：
+git push origin hucc(分支)
+
+从服务器获取更新：
+git pull origin hucc(分支)
+
+合并：
+先切换到master:   git checkout master
+执行合并指令：    git merge hucc
+
+查看当前分支修改内容：
+git status -s
+
+查看以往提交记录：
+git whatchanged
+
+清空为提交修改：
+git reset --hard   (会退清空)
+git checkout .     (清空已经修改的文件)
+

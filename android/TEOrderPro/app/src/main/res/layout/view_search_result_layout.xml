@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="45dp">
+
+    <TextView
+        android:id="@+id/dish_code"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:minWidth="80dp"
+        android:padding="4dp"
+        android:singleLine="true"
+        android:text="code"/>
+
+    <TextView
+        android:id="@+id/dish_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_toRightOf="@+id/dish_code"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:padding="4dp"
+        android:singleLine="true"
+        android:text="dishName"/>
+
+</RelativeLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_login_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background">
+
+    <com.toughegg.teorderpo.view.MyTopActionBar
+        android:id="@+id/top_action_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp">
+    </com.toughegg.teorderpo.view.MyTopActionBar>
+
+    <TextView
+        android:id="@+id/activity_login_tosetip_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="45dp"
+        android:padding="8dp"
+        android:text="@string/app_switch_service"
+        android:textColor="@color/color_gray_dark"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edittext_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/login_head"/>
+
+    <LinearLayout
+        android:id="@+id/edittext_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/activity_login_merchant_id"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/btn_height"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:hint="@string/activity_login_merchant_id_edit_hint"
+            android:inputType="number"
+            android:maxLength="4"
+            android:text=""/>
+
+
+        <EditText
+            android:id="@+id/activity_login_user_id"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/activity_all_padding_top"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:hint="@string/activity_login_user_id_edit_hint"
+            android:inputType="number"
+            android:maxLength="3"
+            android:text=""/>
+
+        <EditText
+            android:id="@+id/activity_login_password"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/activity_all_padding_top"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:hint="@string/activity_login_password_edit_hint"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/activity_login_login_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/activity_all_padding_top"
+            android:background="@drawable/title_touch_color"
+            android:gravity="center"
+            android:text="@string/activity_login_login_btn"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/text_size_big"/>
+    </LinearLayout>
+
+    <!-- 版本信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/activity_login_version_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Version:1.0.0"
+            android:textColor="@color/color_white"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Copyright © 2014-2015 Tough Egg Pte Ltd All Rights Reserved."
+            android:textColor="@color/color_white"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- 设置IP-->
+    <LinearLayout
+        android:id="@+id/activity_login_setip_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/translucent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/color_white"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/activity_login_setip_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/activity_login_setip_textview"
+                android:background="@drawable/rectangle_boder"
+                android:digits="1234567890."
+                android:hint="192.168.1.1"
+                android:padding="4dp"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/activity_login_setip_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="4dp"
+                android:text="@string/app_confirm"
+                android:textColor="@color/color_gray_dark"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
