@@ -30,12 +30,9 @@ import com.toughegg.teorderpo.modle.entry.dishMenu.Option;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultData;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultDataItem;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultItemModifier;
-import com.toughegg.teorderpo.modle.entry.uploadOrder.Item;
 import com.toughegg.teorderpo.modle.entry.uploadOrder.OrderDetail;
+import com.toughegg.teorderpo.modle.entry.uploadOrder.OrderLuaDetail;
 import com.toughegg.teorderpo.modle.entry.uploadOrder.OrderNewData;
-import com.toughegg.teorderpo.modle.printOrder.PrintDishList;
-import com.toughegg.teorderpo.modle.printOrder.PrintOrderDetail;
-import com.toughegg.teorderpo.modle.printOrder.PrintPriceOptionList;
 import com.toughegg.teorderpo.mvp.mvppresenter.ShoppingCartPresenterImp;
 import com.toughegg.teorderpo.mvp.mvppresenter.UpLoadOrderPresenterImp;
 import com.toughegg.teorderpo.mvp.mvppresenter.UpLoadOrderPresenterInf;
@@ -97,6 +94,8 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
     private UpLoadOrderPresenterInf mUpLoadOrderPresenterInf;
 
     private LuaUtils mLuaUtils;
+    private OrderLuaDetail mOrderLuaDetail;
+    private OrderDetail mOrderJsonDetail;
 
     private Iterator mIpIterator;// 从lua获取IP的迭代器
     private boolean mIsSubmitSuccess = false;
@@ -112,7 +111,7 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
                 showShoppingCartList (hashMap);
             } else if (msg.what == LuaUtils.HANDLER_LUA_SUCCESS) {// 购物车数据 通过lua计算成功
                 String orderDetailStr = (String) msg.obj;
-                Log.d ("str", "mOrderDetailStr-->>" + orderDetailStr);
+                Log.e ("aaron1", "mOrderDetailStr-->>" + orderDetailStr);
                 setLuaData (orderDetailStr);
             } else if (msg.what == NetPrintServer.HANDLER_PRINT_COM) {
                 printCom ();// 完成打印
@@ -258,14 +257,19 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
 
     private void showShoppingCartList (HashMap<String, Object> hashMap) {
         List<ShoppingCart> shoppingCarts = (List<ShoppingCart>) hashMap.get ("shoppingcartlist");
-        List<ItemTax> itemTaxList = (List<ItemTax>) hashMap.get ("itemtaxlist");
+        List<ItemTax> itemTaxes = (List<ItemTax>) hashMap.get ("itemtaxlist");
+        List<ItemTax> itemTaxList = new ArrayList<> ();
+        for (ItemTax itemTax : itemTaxes) {// 暂时－－－－－－－－－－－－－－－
+            itemTax.setEffectOrderTypes ("1");
+            itemTaxList.add (itemTax);
+        }
         Log.e ("aaron", "OrderDetailActivity>>>\n\n" + itemTaxList.toString () + "\n\n");
-        List<Item> itemList = new ArrayList<> ();
-        List<Item> tempItemList = new ArrayList<> ();
-        OrderDetail orderDetail = new OrderDetail ();
+        List<OrderNetResultDataItem> itemList = new ArrayList<> ();
+        List<OrderNetResultDataItem> tempItemList = new ArrayList<> ();
+        mOrderLuaDetail = new OrderLuaDetail ();
         for (ShoppingCart shoppingCart : shoppingCarts) {// 设置shopping_cart里面的数据
             mOrderDishListLayout.addView (MyUtil.createTextView (this, shoppingCart, mIsNewOrUpdate));// 显示菜单
-            Item item = new Item ();
+            OrderNetResultDataItem item = new OrderNetResultDataItem ();
             item.setItemTax (itemTaxList);
             item.setAction (0);
             if (mIsNewOrUpdate) {
@@ -279,7 +283,7 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
             item.setCode (shoppingCart.getCode ());
             item.setCount (shoppingCart.getCopies ());
             item.setDiscountAmount ("");
-            item.setDishAction ("");
+//            item.setDishAction ("");
             item.setGroupNumber (0);
             item.setIsDeleted (shoppingCart.getIsDeleted ());
             item.setItemDiscount ("0");
@@ -309,10 +313,6 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
             String str = modifierListStr.substring (0, modifierListStr.length ());
             String[] strArray = str.split (",");
             List<String> stringList = new ArrayList<> ();
-//            for (String aStrArray : strArray) {
-//                stringList.add(aStrArray);
-//            }
-
             Collections.addAll (stringList, strArray);
 
             item.setModifier (uploadModifierList);
@@ -327,16 +327,16 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
         }
         // 因为需要显示是新单在前，json数据是新单在后，所以添加这个临时变量
         itemList.addAll (tempItemList);
-        orderDetail.setItem (itemList);
-        if (mIsNewOrUpdate) {
-            setOrderDetailUpdateOrder (orderDetail, data);
-        } else {
-            setOrderDetailNewOrder (orderDetail);
+        mOrderLuaDetail.setItem (itemList);
+        if (mIsNewOrUpdate) {// 更新
+            setOrderDetailUpdateOrder (mOrderLuaDetail, data);
+        } else {// 新建订单
+            setOrderDetailNewOrder (mOrderLuaDetail);
         }
 
         // 通过lua计算返回json数据
         Gson gson = new Gson ();
-        final String json = gson.toJson (orderDetail);
+        final String json = gson.toJson (mOrderLuaDetail);
         Log.d ("aaron", "json-->>" + json);
         mLuaUtils.executeLuaCalculate (json);
     }
@@ -357,9 +357,17 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
                     printMethod ((OrderNewData) msg.obj);
                 }
                 break;
-            default:
+            case TEOrderPoConstans.HANDLER_WHAT_POST_FAIL:
                 mLoadingDialog.dismiss ();
-                MyUtil.handlerSendMessage (this, msg);
+                DialogUtils.createErrorDialog (this, (String) msg.obj);
+                break;
+            case TEOrderPoConstans.HANDLER_WHAT_SERVICE_CONNECTION_FAIL:
+                mLoadingDialog.dismiss ();
+                DialogUtils.createErrorDialog (this, R.string.app_service_is_not_connected);
+                break;
+            case TEOrderPoConstans.HANDLER_WHAT_NET_ERROR:
+                mLoadingDialog.dismiss ();
+                DialogUtils.createErrorDialog (this, R.string.app_net_date_error);
                 break;
         }
     }
@@ -385,7 +393,6 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
             HashMap.Entry entry = (HashMap.Entry) mIpIterator.next ();
             String key = (String) entry.getKey ();
             String ip = (String) entry.getValue ();
-            Log.e ("aaron", "OrderDetail>>>>>>>>>>>>>>>>>" + key + " -- " + ip);
             if (ip.equals (TEOrderPoConstans.PRINT_DETALS_IP)) {
                 flag = false;
                 break;
@@ -408,7 +415,9 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
             myDialogOneBtn.show ();
             return;
         }
-        String orderDetailStr = mLuaUtils.getOrderDetailStr ();
+
+//        String orderDetailStr = mLuaUtils.getOrderDetailStr ();
+        String orderDetailStr = new Gson ().toJson (mOrderJsonDetail);
         Log.e ("aaron", ">>>>==============" + orderDetailStr);
         mLoadingDialog = DialogUtils.createLoadingDialog (this, R.string.app_please_wait, false);
         mLoadingDialog.show ();
@@ -422,12 +431,13 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
     /**
      * 将网络菜单设置到lua
      */
-    private void setUpdateListData (OrderNetResultData data, List<Item> itemList, List<ItemTax> itemTaxes) {
+    private void setUpdateListData (OrderNetResultData data, List<OrderNetResultDataItem> itemList, List<ItemTax> itemTaxes) {
         List<OrderNetResultDataItem> dataItemList = data.getItem ();
         for (OrderNetResultDataItem dataItem : dataItemList) {// 设置,网络菜单数据
 //            Log.e ("aaron", TAG + "  >>>" + dataItem.toString () + "\n\n");
             mOrderDishListLayout.addView (MyUtil.createTextView (this, getShoppingCart (dataItem), mIsNewOrUpdate));// 显示菜单
-            Item item = new Item ();
+            OrderNetResultDataItem item = new OrderNetResultDataItem ();
+//            item.setItemTax (dataItem.getItemTax ());
             item.setItemTax (itemTaxes);
             item.setAction (dataItem.getAction ());
             item.setName (dataItem.getName ());
@@ -438,7 +448,6 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
             item.setCode (dataItem.getCode ());
             item.setCount (dataItem.getCount ());
             item.setDiscountAmount (dataItem.getDiscountAmount ());
-            item.setDishAction (dataItem.getDishAction ());
             item.setGroupNumber (dataItem.getGroupNumber ());
             item.setIsDeleted (dataItem.isDeleted ());
             item.setItemDiscount (dataItem.getItemDiscount ());
@@ -459,77 +468,173 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
         }
     }
 
-    private void setOrderDetailNewOrder (OrderDetail orderDetail) {
-        orderDetail.setAddress ("");
-        orderDetail.setAddTat ("");
-        orderDetail.setBasePrice ("");
-        orderDetail.setCancelledBy (0);
-        orderDetail.setStatus (0);
-        orderDetail.setIsPaid (0);
-        orderDetail.setUpdatedStamp ("");
-        orderDetail.setContactName ("");
-        orderDetail.setContactNum ("");
-        orderDetail.setCreatedStamp ("");
-        orderDetail.setDiningDataTime ("");
-        orderDetail.setDiscountAmount ("");
-        orderDetail.setDiscountPrice ("");
-        orderDetail.setIsReview (0);
-        orderDetail.setType (mType);
-        if (mType == TEOrderPoConstans.ORDER_TYPE_HOUSE) {
-            orderDetail.setCustomerNum (peopleNumber);
-            orderDetail.setTableCode (tableNumber);
-            orderDetail.setTableId (tableId);
+    /**
+     * // 已经设置itemList
+     *
+     * @param orderLuaDetail
+     */
+    private void setOrderDetailNewOrder (OrderLuaDetail orderLuaDetail) {
+        orderLuaDetail.setId (0);// 默认0，来自AWS的订单id
+        orderLuaDetail.setAddTax ("");// 默认为"",总税额，sum(item.addTaxAmount * count)
+        orderLuaDetail.setAddress ("");// 默认为"",联系人地址
+        orderLuaDetail.setBasePrice ("");// 默认为"",原始价格，所有item的 basePrice * count 的总和
+        orderLuaDetail.setCancelRemark ("");// 取消说明
+        orderLuaDetail.setCancelledBy (0);//取消人id （0表示是顾客，其它表示店员)
+        // 构建默认的Cancel
+        OrderLuaDetail.Cancel cancel = new OrderLuaDetail.Cancel ();
+        cancel.setId (0);
+        cancel.setOperatorId (0);
+        cancel.setOperatorName ("");
+        cancel.setCancelReason ("");
+        cancel.setCreatedStamp ("");
+        orderLuaDetail.setCancel (cancel);//取消操作信息
+        orderLuaDetail.setContactName ("");//联系人
+        orderLuaDetail.setContactNum ("");// 联系电话
+        orderLuaDetail.setCreatedStamp ("");// 创建时间
+        orderLuaDetail.setDiningDateTime ("");// 用餐时间
+        orderLuaDetail.setDiscountAmount ("");//折扣优惠金额，sum(item.discountAmount * count)
+        orderLuaDetail.setDiscountPrice ("");//不含税的折后价格，sum(item.itemPrice * count)
+        orderLuaDetail.setFromYami (false);//给默认值，是否来自yami的订单(手机下的单)
+        orderLuaDetail.setIsRead (false);//餐厅是否已经读过此单(仅LMS使用)
+        orderLuaDetail.setMaxGroupNumber (0);//当前最大GroupNumber(仅LMS使用)
+        orderLuaDetail.setMaxOrderItemId (0);////当前最大OrderItemId(仅LMS使用)
+        orderLuaDetail.setMemberId (0);//会员ID
+        orderLuaDetail.setMenuId ("");// 菜单ID
+        orderLuaDetail.setMerchantConfirmed (false);//餐厅是否已经确认接收此订单
+        orderLuaDetail.setOperatorId (0);// 操作店员账号id－－－－－－－－－－－－－－－－
+        orderLuaDetail.setOperatorName ("");// 操作店员账号名字－－－－－－－－－－－－－－－
+        orderLuaDetail.setOrderDiscount ("");//整单折扣率
+        orderLuaDetail.setOrderNo ("");//订单号
+        orderLuaDetail.setPayPrice ("");//订单应付金额
+        orderLuaDetail.setRemark (""); //备注
+        orderLuaDetail.setRestId (restId);//餐厅id
+        orderLuaDetail.setRound ("");//现金付款为了取整而调整的金额
+        orderLuaDetail.setStatus (0);//订单状态 0 新增订单,1 已经取消, 2 已付款, 3 已经完成, 4 已经退款, 5 商家已经确认接收订单, 6 订单过期失效(目前商家拒收也会置为此状态)
+        orderLuaDetail.setSetNeedsUpload (false);//是否需要提交以生成报表, true表示尚未提交, false表示已提交
+        orderLuaDetail.setTakeAwayNo ("");//打包单单号
+        orderLuaDetail.setTotalGst ("");//商户端自用的gst数额显示
+        orderLuaDetail.setTotalService ("");// 总的Service Charge 服务税
+        orderLuaDetail.setDidTableCode ("");// 换桌旧桌号；  默认为空字符 ''
+        orderLuaDetail.setType (mType);//订单类型（1堂食，2打包，3预定）
+        if (mType == TEOrderPoConstans.ORDER_TYPE_HOUSE) {// 堂食才会有用餐人数、餐桌信息
+            orderLuaDetail.setCustomerNum (peopleNumber);// 用餐人数
+            orderLuaDetail.setTableCode (tableNumber);//桌号
+            orderLuaDetail.setTableId (tableId);//餐桌id
         } else if (mType == TEOrderPoConstans.ORDER_TYPE_TAKEAWAY) {
-            orderDetail.setCustomerNum (1);
-            orderDetail.setTableCode ("");
-            orderDetail.setTableId ("");
+            orderLuaDetail.setCustomerNum (1);// 用餐人数
+            orderLuaDetail.setTableCode ("");//桌号
+            orderLuaDetail.setTableId ("");//餐桌id
         }
-        orderDetail.setRemark ("");
-        orderDetail.setOrderId (0);
-        orderDetail.setOrderDiscount ("");
-        orderDetail.setTotalGst ("");
-        orderDetail.setTotalServiceTax ("");
-        orderDetail.setRound ("");
-        orderDetail.setPayPrice ("");
-        orderDetail.setOrderNo ("");
-        orderDetail.setRestaurantId (restId);
+        orderLuaDetail.setUpdatedStamp ("");//更新时间
+        orderLuaDetail.setSetNeedsPrint (true);//是否需要打印//以前使用的是    isChangeForDish: TESchema.TEBoolean, // 是否有菜品改变
+        orderLuaDetail.setTips ("");//小费
+        orderLuaDetail.setIsTotalOrder (false);//判断是否是总单（程序里面用来使用的字段，打印需要调用）
+        orderLuaDetail.setCashRounding ("");//判断到底要不要取整－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+        orderLuaDetail.setRoundingRule ("");//取整规则 [key]:[value],[key]:[value]... key是付款尾数,value是取整动作－－－－－－－－－－－－－－－－－－－－－－－－－
+        // 构建默认的payment
         OrderNetResultData.Payment payment = new OrderNetResultData.Payment ();
-        payment.setAmount ("");
-        payment.setStatus (0);
+        payment.setId (0);
+        payment.setOperatorId (0);
+        payment.setInvoiceNo ("");
         payment.setPaymentMethod (0);
-        payment.setTransactionNo ("");
-        orderDetail.setPayment (payment);
+        payment.setAmount ("");
+        payment.setReceived ("");
+        payment.setChange ("");
+        payment.setStatus (0);
+        payment.setCreatedStamp ("");
+        payment.setUpdatedStamp ("");
+        orderLuaDetail.setPayment (payment);// 付款信息
+        // 构建默认的refund
+        OrderNetResultData.Refund refund = new OrderNetResultData.Refund ();
+        refund.setId (0);
+        refund.setOperatorId (0);
+        refund.setRefundMethod (0);
+        refund.setStatus (0);
+        refund.setAmount ("");
+        refund.setRefundedBy (0);
+        refund.setRefundeason ("");
+        refund.setCreatedStamp ("");
+        refund.setUpdatedStamp ("");
+        orderLuaDetail.setRefund (refund);//退款信息
     }
 
-    private void setOrderDetailUpdateOrder (OrderDetail orderDetail, OrderNetResultData data) {
-        orderDetail.setAddress (data.getAddress ());
-        orderDetail.setAddTat (data.getAddTax ());
-        orderDetail.setBasePrice (data.getBasePrice ());
-        orderDetail.setCancelledBy (data.getCancelledBy ());
-        orderDetail.setStatus (data.getStatus ());
-        orderDetail.setIsPaid (0);// ----------
-        orderDetail.setUpdatedStamp (data.getUpdatedStamp ());
-        orderDetail.setCustomerNum (data.getCustomerNum ());
-        orderDetail.setContactName (data.getContactName ());
-        orderDetail.setContactNum (data.getContactNum ());
-        orderDetail.setCreatedStamp (data.getCreatedStamp ());
-        orderDetail.setDiningDataTime (data.getDiningDataTime ());
-        orderDetail.setDiscountAmount (data.getDiscountAmount ());
-        orderDetail.setDiscountPrice (data.getDiscountPrice ());
-        orderDetail.setIsReview (data.getIsReview ());
-        orderDetail.setTableCode (data.getTableCode ());
-        orderDetail.setTableId (data.getTableId ());
-        orderDetail.setRemark (data.getRemark ());
-        orderDetail.setOrderId (data.getOrderId ());
-        orderDetail.setOrderDiscount (data.getOrderDiscount ());
-//        orderDetail.setTotalGst (data.getTotalGst ());
-//        orderDetail.setTotalServiceTax (data.getTotalServiceTax ());
-//        orderDetail.setRound (data.getRound ());
-        orderDetail.setPayPrice (data.getPayPrice ());
-        orderDetail.setOrderNo (data.getOrderNo ());
-        orderDetail.setType (data.getType ());
-        orderDetail.setRestaurantId (data.getRestaurantId ());
-        orderDetail.setPayment (data.getPayment ());
+    private void setOrderDetailUpdateOrder (OrderLuaDetail orderLuaDetail, OrderNetResultData data) {
+        orderLuaDetail.setId (data.getId ());// 默认0，来自AWS的订单id
+        orderLuaDetail.setAddTax (data.getAddTax ());// 默认为"",总税额，sum(item.addTaxAmount * count)
+        orderLuaDetail.setAddress (data.getAddress ());// 默认为"",联系人地址
+        orderLuaDetail.setBasePrice (data.getBasePrice ());// 默认为"",原始价格，所有item的 basePrice * count 的总和
+        orderLuaDetail.setCancelRemark (data.getCancelRemark ());// 取消说明
+        orderLuaDetail.setCancelledBy (data.getCancelledBy ());//取消人id （0表示是顾客，其它表示店员)
+        // 构建默认的Cancel
+        OrderLuaDetail.Cancel cancel = new OrderLuaDetail.Cancel ();
+        cancel.setId (0);
+        cancel.setOperatorId (0);
+        cancel.setOperatorName ("");
+        cancel.setCancelReason ("");
+        cancel.setCreatedStamp ("");
+        orderLuaDetail.setCancel (cancel);//取消操作信息
+        orderLuaDetail.setContactName (data.getContactName ());//联系人
+        orderLuaDetail.setContactNum (data.getContactNum ());// 联系电话
+        orderLuaDetail.setCreatedStamp (data.getCreatedStamp ());// 创建时间
+        orderLuaDetail.setDiningDateTime (data.getDiningDataTime ());// 用餐时间
+        orderLuaDetail.setDiscountAmount (data.getDiscountAmount ());//折扣优惠金额，sum(item.discountAmount * count)
+        orderLuaDetail.setDiscountPrice (data.getDiscountPrice ());//不含税的折后价格，sum(item.itemPrice * count)
+        orderLuaDetail.setFromYami (data.isFromYami ());//给默认值，是否来自yami的订单(手机下的单)
+        orderLuaDetail.setIsRead (data.isRead ());//餐厅是否已经读过此单(仅LMS使用)
+        orderLuaDetail.setMaxGroupNumber (data.getMaxGroupNumber ());//当前最大GroupNumber(仅LMS使用)
+        orderLuaDetail.setMaxOrderItemId (data.getMaxOrderItemId ());////当前最大OrderItemId(仅LMS使用)
+        orderLuaDetail.setMemberId (data.getMemberId ());//会员ID
+        orderLuaDetail.setMenuId (data.getMenuId ());// 菜单ID
+        orderLuaDetail.setMerchantConfirmed (data.isMerchantConfirmed ());//餐厅是否已经确认接收此订单
+        orderLuaDetail.setOperatorId (data.getOperatorId ());// 操作店员账号id－－－－－－－－－－－－－－－－
+        orderLuaDetail.setOperatorName (data.getContactName ());// 操作店员账号名字－－－－－－－－－－－－－－－
+        orderLuaDetail.setOrderDiscount (data.getOrderDiscount ());//整单折扣率
+        orderLuaDetail.setOrderNo (data.getOrderNo ());//订单号
+        orderLuaDetail.setPayPrice (data.getPayPrice ());//订单应付金额
+        orderLuaDetail.setRemark (data.getRemark ()); //备注
+        orderLuaDetail.setRestId (data.getRestId ());//餐厅id
+        orderLuaDetail.setRound (data.getRound ());//现金付款为了取整而调整的金额
+        orderLuaDetail.setStatus (data.getStatus ());//订单状态 0 新增订单,1 已经取消, 2 已付款, 3 已经完成, 4 已经退款, 5 商家已经确认接收订单, 6 订单过期失效(目前商家拒收也会置为此状态)
+        orderLuaDetail.setSetNeedsUpload (data.isSetNeedsUpload ());//是否需要提交以生成报表, true表示尚未提交, false表示已提交
+        orderLuaDetail.setTakeAwayNo (data.getTakeAwayNo ());//打包单单号
+        orderLuaDetail.setTotalGst (data.getTotalGst ());//商户端自用的gst数额显示
+        orderLuaDetail.setTotalService (data.getTotalGst ());// 总的Service Charge 服务税
+        orderLuaDetail.setDidTableCode (data.getTableCode ());// 换桌旧桌号；  默认为空字符 ''
+        orderLuaDetail.setType (data.getType ());//订单类型（1堂食，2打包，3预定）
+        orderLuaDetail.setCustomerNum (data.getCustomerNum ());// 用餐人数
+        orderLuaDetail.setTableCode (data.getTableCode ());//桌号
+        orderLuaDetail.setTableId (data.getTableId ());//餐桌id
+        orderLuaDetail.setUpdatedStamp (data.getUpdatedStamp ());//更新时间
+        orderLuaDetail.setSetNeedsPrint (true);//是否需要打印//以前使用的是    isChangeForDish: TESchema.TEBoolean, // 是否有菜品改变
+        orderLuaDetail.setTips (data.getTips ());//小费
+        orderLuaDetail.setIsTotalOrder (false);//判断是否是总单（程序里面用来使用的字段，打印需要调用）
+        orderLuaDetail.setCashRounding ("");//判断到底要不要取整－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+        orderLuaDetail.setRoundingRule ("");//取整规则 [key]:[value],[key]:[value]... key是付款尾数,value是取整动作－－－－－－－－－－－－－－－－－－－－－－－－－
+        // 构建默认的payment
+        OrderNetResultData.Payment payment = new OrderNetResultData.Payment ();
+        payment.setId (0);
+        payment.setOperatorId (0);
+        payment.setInvoiceNo ("");
+        payment.setPaymentMethod (data.getPayment ().getPaymentMethod ());
+        payment.setAmount ("");
+        payment.setReceived ("");
+        payment.setChange ("");
+        payment.setStatus (0);
+        payment.setCreatedStamp ("");
+        payment.setUpdatedStamp ("");
+        orderLuaDetail.setPayment (payment);// 付款信息
+        // 构建默认的refund
+        OrderNetResultData.Refund refund = new OrderNetResultData.Refund ();
+        refund.setId (0);
+        refund.setOperatorId (0);
+        refund.setRefundMethod (0);
+        refund.setStatus (0);
+        refund.setAmount ("");
+        refund.setRefundedBy (0);
+        refund.setRefundeason ("");
+        refund.setCreatedStamp ("");
+        refund.setUpdatedStamp ("");
+        orderLuaDetail.setRefund (refund);//退款信息
     }
 
     // 将网络菜单的数据转化为ShoppingCart方便显示
@@ -592,80 +697,15 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
     /**
      * 执行打印操作
      *
-     * @param orderDetailLua
+     * @param orderNewData
      */
-    public void printMethod (OrderNewData orderDetailLua) {
-        mOrderNo = orderDetailLua.getOrderNo ();
+    public void printMethod (OrderNewData orderNewData) {
+        mOrderNo = orderNewData.getOrderNo ();
 
-        PrintOrderDetail mPrintOrderDetail = new PrintOrderDetail ();
-        mPrintOrderDetail.setTake_away_number (Integer.parseInt (orderDetailLua.getTakeAwayNo ()));
-        mPrintOrderDetail.setIs_paid (false);
-        mPrintOrderDetail.setTotal_price_without_fee (0);
-        mPrintOrderDetail.setRemark ("");
-        mPrintOrderDetail.setGst (0);
-        mPrintOrderDetail.setIs_printed_invoice (0);
-        mPrintOrderDetail.setTable_id (orderDetailLua.getTableId ());
-        mPrintOrderDetail.setTotal_gst (orderDetailLua.getTotalGst ());
-        mPrintOrderDetail.setTotal_service_tax (orderDetailLua.getTotalServiceTax ());
-        mPrintOrderDetail.setInternetTotalPrice (0);
-        mPrintOrderDetail.setType (orderDetailLua.getType ());
-        mPrintOrderDetail.setIsChangeForDish (true);
-        mPrintOrderDetail.setCustomer_number (orderDetailLua.getCustomerNum ());
-        mPrintOrderDetail.setDiscount ("0");
-        mPrintOrderDetail.setDiscount_price (orderDetailLua.getDiscountAmount ());
-//                mPrintOrderDetail.setInvoiceNo(orderDetailLua.get);
-        mPrintOrderDetail.setDidTable_number ("");
-        mPrintOrderDetail.setOrder_no (orderDetailLua.getOrderNo ());
-        List<PrintDishList> mPrintDishLists = new ArrayList<> ();
+        mOrderLuaDetail.setTakeAwayNo (orderNewData.getTakeAwayNo ());
+        mOrderLuaDetail.setSetNeedsPrint (true);
 
-        for (Item item : orderDetailLua.getItem ()) {// 设置shoppingcart里面的数据
-            PrintDishList mPrintDishList = new PrintDishList ();
-            mPrintDishList.setIs_hot (0);
-            mPrintDishList.setSortno (101);
-            mPrintDishList.setRemark (item.getRemark ());
-            mPrintDishList.setDish_id (item.getOrderItemId ());
-            mPrintDishList.setIs_localChange (0);
-            mPrintDishList.setIs_discount_select (0);
-//                    mPrintDishList.setPriceOptionList();
-            List<PrintPriceOptionList> mPrintPriceOptionList = new ArrayList<> ();
-            for (OrderNetResultItemModifier orderNetResultItemModifier : item.getModifier ()) {
-                PrintPriceOptionList printPriceOptionList = new PrintPriceOptionList ();
-                List<String> name = new ArrayList<> ();
-                name.add (0, orderNetResultItemModifier.getName ().getEn_US ());
-                name.add (1, orderNetResultItemModifier.getName ().getZh_CN ());
-                printPriceOptionList.setName (name);
-                printPriceOptionList.setDefault_price (orderNetResultItemModifier.getUnitPrice ());
-                printPriceOptionList.setPrice_option_id (orderNetResultItemModifier.getModifierOptionId ());
-                printPriceOptionList.setDish_count (orderNetResultItemModifier.getCount ());
-                mPrintPriceOptionList.add (printPriceOptionList);
-            }
-            mPrintDishList.setPriceOptionList (mPrintPriceOptionList);
-            List<String> dishName = new ArrayList<> ();
-            dishName.add (0, item.getName ().getEn_US ());
-            dishName.add (1, item.getName ().getZh_CN ());
-            mPrintDishList.setName (dishName);
-            mPrintDishList.setDish_code (item.getCode ());
-            mPrintDishList.setIs_change_forPrint (true);
-            mPrintDishList.setPrice (item.getMenuPrice ());
-            mPrintDishList.setCopies (item.getCount ());
-            mPrintDishList.setIs_change_forPrint (item.isSetNeedsPrint ());
-            mPrintDishList.setIs_deleted (item.getIsDeleted ());
-            mPrintDishLists.add (mPrintDishList);
-        }
-        mPrintOrderDetail.setDishList (mPrintDishLists);
-//                mPrintOrderDetail.setPaymentCash(orderDetailLua.getPaymentChange());
-        mPrintOrderDetail.setTable_number (orderDetailLua.getTableCode ());
-        mPrintOrderDetail.setDish_total_price (orderDetailLua.getBasePrice ());
-        mPrintOrderDetail.setTotal_price (orderDetailLua.getPayPrice ());
-        mPrintOrderDetail.setRound (orderDetailLua.getRound ());
-        String userName = SharePrefenceUtils.readString (OrderDetailActivity.this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans
-                .SP_LOGIN_USERNAME);
-        mPrintOrderDetail.setUsername (userName);
-
-
-        Gson gson = new Gson ();
-        json = gson.toJson (mPrintOrderDetail);
-        Log.e ("aaron", "打印数据>>>>>" + json);
+        json = new Gson ().toJson (mOrderLuaDetail);
 
         while (mIpIterator.hasNext ()) {
             mLuaState = LuaStateFactory.newLuaState ();
@@ -679,26 +719,62 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
         }
     }
 
+    /**
+     * 设置lua计算后的数据
+     * ＊＊＊＊＊＊＊＊＊＊＊＊需要构建一个OrderJsonDetail对象来提交订单＊＊＊＊＊＊＊＊＊＊＊＊
+     *
+     * @param json
+     */
     private void setLuaData (String json) {
-        OrderDetail orderDetailLua = new Gson ().fromJson (json, OrderDetail.class);
+        mOrderLuaDetail = new Gson ().fromJson (json, OrderLuaDetail.class);
         // 菜品合计
-        double basePrice = Double.parseDouble (orderDetailLua.getBasePrice ());
+        double basePrice = Double.parseDouble (mOrderLuaDetail.getBasePrice ());
         mSubtotalTextView.setText (TEOrderPoConstans.DOLLAR_SIGN
                 + StringUtils.getPriceString (basePrice, TEOrderPoConstans.PRICE_FORMAT_TWO));
         // 税收
-        double gstPrice = Double.parseDouble (orderDetailLua.getTotalGst ());
+        double gstPrice = Double.parseDouble (mOrderLuaDetail.getTotalGst ());
         mConsumptionTaxTextView.setText (TEOrderPoConstans.DOLLAR_SIGN
                 + StringUtils.getPriceString (gstPrice, TEOrderPoConstans.PRICE_FORMAT_TWO));
-        double servicePrice = Double.parseDouble (orderDetailLua.getTotalServiceTax ());
+        double servicePrice = Double.parseDouble (mOrderLuaDetail.getTotalService ());
         mServiceTaxTextView.setText (TEOrderPoConstans.DOLLAR_SIGN
                 + StringUtils.getPriceString (servicePrice, TEOrderPoConstans.PRICE_FORMAT_TWO));
-        double roundPrice = Double.parseDouble (orderDetailLua.getRound ());
+        double roundPrice = Double.parseDouble (mOrderLuaDetail.getRound ());
         mRoundTextView.setText (TEOrderPoConstans.DOLLAR_SIGN
                 + StringUtils.getPriceString (roundPrice, TEOrderPoConstans.PRICE_FORMAT_TWO));
         // 总计
-        double totalPrice = Double.parseDouble (orderDetailLua.getPayPrice ());
+        double totalPrice = Double.parseDouble (mOrderLuaDetail.getPayPrice ());
         myBottomBar.setLeftPrice (true, TEOrderPoConstans.DOLLAR_SIGN
                 + StringUtils.getPriceString (totalPrice, TEOrderPoConstans.PRICE_FORMAT_TWO));
+
+        createOrderJsonDetail ();
+    }
+
+    private void createOrderJsonDetail () {
+        mOrderJsonDetail = new OrderDetail ();
+        mOrderJsonDetail.setAddTax (mOrderLuaDetail.getAddTax ());
+        mOrderJsonDetail.setAddress (mOrderLuaDetail.getAddress ());
+        mOrderJsonDetail.setBasePrice (mOrderLuaDetail.getBasePrice ());
+        mOrderJsonDetail.setCancelRemark (mOrderLuaDetail.getCancelRemark ());
+        mOrderJsonDetail.setCancelledBy (mOrderLuaDetail.getCancelledBy ());
+        mOrderJsonDetail.setContactName (mOrderLuaDetail.getContactName ());
+        mOrderJsonDetail.setContactNum (mOrderLuaDetail.getContactNum ());
+        mOrderJsonDetail.setCreatedStamp (mOrderLuaDetail.getCreatedStamp ());
+        mOrderJsonDetail.setCustomerNum (mOrderLuaDetail.getCustomerNum ());
+        mOrderJsonDetail.setDiscountAmount (mOrderLuaDetail.getDiscountAmount ());
+        mOrderJsonDetail.setDiscountPrice (mOrderLuaDetail.getDiscountPrice ());
+        mOrderJsonDetail.setRemark (mOrderLuaDetail.getRemark ());
+        mOrderJsonDetail.setRestId (mOrderLuaDetail.getRestId ());
+        mOrderJsonDetail.setRound (mOrderLuaDetail.getRound ());
+        mOrderJsonDetail.setTableCode (mOrderLuaDetail.getTableCode ());
+        mOrderJsonDetail.setTableId (mOrderLuaDetail.getTableId ());
+        mOrderJsonDetail.setTotalGst (mOrderLuaDetail.getTotalGst ());
+        mOrderJsonDetail.setType (mOrderLuaDetail.getType ());
+        mOrderJsonDetail.setUpdatedStamp (mOrderLuaDetail.getUpdatedStamp ());
+        mOrderJsonDetail.setOperatorId (mOrderLuaDetail.getOperatorId ());
+        mOrderJsonDetail.setOrderDiscount (mOrderLuaDetail.getOrderDiscount ());
+        mOrderJsonDetail.setOrderNo (mOrderLuaDetail.getOrderNo ());
+        mOrderJsonDetail.setPayPrice (mOrderLuaDetail.getPayPrice ());
+        mOrderJsonDetail.setItem (mOrderLuaDetail.getItem ());
     }
 
     private void printCom () {
@@ -748,6 +824,7 @@ public class OrderDetailActivity extends BaseActivity implements MyTopActionBar.
             mLoadingDialog.dismiss ();
             rePrintDialog.show ();
         } else {// 打印成功
+            Log.e ("aaron1","--打印成功--打印成功--打印成功--打印成功--打印成功--打印成功--打印成功--");
             mTEOrderPoApplication.printFail = false;
             mTEOrderPoApplication.printLog = null;
             // 跳用API，通知打印完成

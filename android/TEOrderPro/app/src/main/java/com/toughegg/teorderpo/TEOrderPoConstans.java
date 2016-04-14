@@ -13,10 +13,10 @@ public class TEOrderPoConstans {
 //    public static final String URL_LUA = "https://toughegg-test.s3-ap-southeast-1.amazonaws.com/"; // Lua 下载路径
 
     //dev: https://toughegg-development.s3.cn-north-1.amazonaws.com.cn/
-//    public static final String URL_LUA = "https://toughegg-development.s3.cn-north-1.amazonaws.com.cn/"; // Lua 下载路径
+    public static final String URL_LUA = "https://toughegg-development.s3.cn-north-1.amazonaws.com.cn/"; // Lua 下载路径
 
     //live: https://toughegg-production.s3-ap-southeast-1.amazonaws.com/
-    public static final String URL_LUA = "https://toughegg-production.s3-ap-southeast-1.amazonaws.com/"; // Lua 下载路径
+//    public static final String URL_LUA = "https://toughegg-production.s3-ap-southeast-1.amazonaws.com/"; // Lua 下载路径
 
 
     public static final String URL_LOGIN = "api/lms/login";// 登录
@@ -104,6 +104,8 @@ public class TEOrderPoConstans {
     public static final String SP_LOGIN_PASSWORD = "sp_login_password";
     public static final String SP_LOGIN_STATE = "sp_login_state";  //登陆状态
     public static final String SP_SERVICE_IP = "sp_service_ip";  //服务器IP
+    public static final String SP_MERCHANTID_LIST = "sp_merchantid_list";  // 缓存登录过的商户帐号
+    public static final String SP_USERID_LIST = "sp_userid_list";  // 缓存登录过的用户帐号
 
 
     //=====================固定string=========================
@@ -121,7 +123,8 @@ public class TEOrderPoConstans {
     // ********** 中英文标示 **********
     public static final String LANGUAGE_ENGLISH = "en";
     public static final String LANGUAGE_CHINESE = "zh";
-    public static final String LANGUAGE_CHINESE_TW = "zh_tw";
+    public static final String LANGUAGE_CHINESE_TW = "zh_tw";// 繁体
+    public static final String LANGUAGE_KOREAN_KR = "ko_kr";// 韩文
     // ********** 金额符号 **********
     public static final String DOLLAR_SIGN = "$";
     // ********** 金额的格式 **********

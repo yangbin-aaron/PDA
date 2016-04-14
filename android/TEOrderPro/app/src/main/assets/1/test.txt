@@ -1,236 +1,119 @@
 {
-    "addText": "",
-    "address": "",
-    "basePrice": "",
-    "updatedStamp": "",
-    "contactName": "",
-    "contactNum": "",
-    "createdStamp": "",
-    "totalServiceTax": "",
-    "diningDataTime": "",
-    "discountAmount": "",
-    "discountPrice": "",
-    "totalGst": "",
-    "item": [
+  "operatorId" : "75",
+  "isTotalOrder" : 0,
+  "orderId" : 0,
+  "remark" : "",
+  "customerNum" : 2,
+  "merchantConfirmed" : 0,
+  "contactNum" : "",
+  "address" : "",
+  "orderDiscount" : "0",
+  "totalGst" : "0",
+  "takeAwayNo" : "0",
+  "didTableCode" : "",
+  "tableId" : "56bbe7a7f2180c24275b108c",
+  "type" : 1,
+  "updatedStamp" : "",
+  "setNeedsPrint" : false,
+  "payment" : {
+    "status" : 0,
+    "amount" : "0",
+    "paymentMethod" : 2,
+    "invoiceNo" : "",
+    "change" : "",
+    "received" : ""
+  },
+  "tableCode" : "1",
+  "diningDateTime" : "",
+  "operatorName" : "BT_Manager2",
+  "status" : 0,
+  "discountPrice" : "0",
+  "isPaid" : false,
+  "isRead" : 0,
+  "memberId" : 0,
+  "addTax" : "",
+  "totalService" : "",
+  "fromYami" : 0,
+  "payPrice" : "0",
+  "restId" : "56b021d8f2180c67b8ea9832",
+  "orderNo" : "",
+  "basePrice" : "0",
+  "discountAmount" : "0",
+  "item" : [
+    {
+      "isDeleted" : false,
+      "basePrice" : "0",
+      "isHot" : false,
+      "addTaxAmount" : "",
+      "code" : "RC",
+      "itemTax" : [
         {
-            "remark": "db_null",
-            "priceAdjustment": "0",
-            "orderItemId": "0",
-            "basePrice": "",
-            "categoryId": "5649589c72c68926a8cb51d5",
-            "code": "1B",
-            "name": {
-                "en": "steamed spring chicken with chilli sauce",
-                "zh": "重庆口水鸡"
-            },
-            "discountAmount": "",
-            "dishAction": "",
-            "modifierList": [
-                "56497f3172c68923b40333c0",
-                "56497e2272c68923b4032fc0"
-            ],
-            "modifier": [
-                {
-                    "unitPrice": "0.0",
-                    "modifierId": "56497e2272c68923b4032fc0",
-                    "modifierOptionId": "56497fba72c68923b4033493",
-                    "name": {
-                        "en": "Non Spicy",
-                        "zh": "不辣"
-                    },
-                    "count": 1
-                },
-                {
-                    "unitPrice": "5.0",
-                    "modifierId": "56497f3172c68923b40333c0",
-                    "modifierOptionId": "5649816e72c68923b40339a9",
-                    "name": {
-                        "en": "Add Mutton(Big)",
-                        "zh": "加肉（大份）"
-                    },
-                    "count": 1
-                }
-            ],
-            "itemDiscount": "",
-            "itemPrice": "",
-            "itemTax": [
-                {
-                    "_id": "5649569f72c6892bf008df4c",
-                    "code": "service",
-                    "rate": "0.1",
-                    "name": {
-                        "en": "Service Tax",
-                        "zh": "Service Tax"
-                    },
-                    "isInclude": false,
-                    "fixed": true,
-                    "order": 1,
-                    "enable": true
-                },
-                {
-                    "_id": "5649569f72c6892bf008df4d",
-                    "code": "gst",
-                    "rate": "0",
-                    "name": {
-                        "en": "GST",
-                        "zh": "GST"
-                    },
-                    "isInclude": false,
-                    "fixed": true,
-                    "order": 2,
-                    "enable": true
-                }
-            ],
-            "menuPrice": "8.0",
-            "isDeleted": 0,
-            "modifierAmount": 0,
-            "groupNumber": 0,
-            "count": 1,
-            "allowCustomDiscount": false,
-            "addTaxAmount": 0,
-            "action": 0
+          "enable" : true,
+          "effectOrderTypes" : "",
+          "amount" : "",
+          "taxId" : "56b021d8f2180c67b8ea9835",
+          "fixed" : true,
+          "afterDiscount" : 0,
+          "code" : "service",
+          "order" : 1,
+          "precondition" : "",
+          "rate" : "0.1",
+          "isInclude" : false,
+          "free" : false,
+          "name" : {
+            "en_US" : "Service Tax",
+            "zh_CN" : "Service Tax"
+          }
         },
         {
-            "remark": "db_null",
-            "priceAdjustment": "0",
-            "orderItemId": "0",
-            "basePrice": "",
-            "categoryId": "5649589f72c68926a8cb5214",
-            "code": "3C1",
-            "name": {
-                "en": "lamb tendon(small)",
-                "zh": "羊脚筋（小份）"
-            },
-            "discountAmount": "",
-            "dishAction": "",
-            "modifierList": [
-                ""
-            ],
-            "modifier": [],
-            "itemDiscount": "",
-            "itemPrice": "",
-            "itemTax": [
-                {
-                    "_id": "5649569f72c6892bf008df4c",
-                    "code": "service",
-                    "rate": "0.1",
-                    "name": {
-                        "en": "Service Tax",
-                        "zh": "Service Tax"
-                    },
-                    "isInclude": false,
-                    "fixed": true,
-                    "order": 1,
-                    "enable": true
-                },
-                {
-                    "_id": "5649569f72c6892bf008df4d",
-                    "code": "gst",
-                    "rate": "0",
-                    "name": {
-                        "en": "GST",
-                        "zh": "GST"
-                    },
-                    "isInclude": false,
-                    "fixed": true,
-                    "order": 2,
-                    "enable": true
-                }
-            ],
-            "menuPrice": "12.0",
-            "isDeleted": 0,
-            "modifierAmount": 0,
-            "groupNumber": 0,
-            "count": 1,
-            "allowCustomDiscount": false,
-            "addTaxAmount": 0,
-            "action": 0
-        },
-        {
-            "remark": "db_null",
-            "priceAdjustment": "0",
-            "orderItemId": "0",
-            "basePrice": "",
-            "categoryId": "564958a072c68926a8cb5225",
-            "code": "7D",
-            "name": {
-                "en": "Fried peanut",
-                "zh": "油酥花生米"
-            },
-            "discountAmount": "",
-            "dishAction": "",
-            "modifierList": [
-                "56497f3172c68923b40333c0"
-            ],
-            "modifier": [
-                {
-                    "unitPrice": "5.0",
-                    "modifierId": "56497f3172c68923b40333c0",
-                    "modifierOptionId": "5649819a72c68923b40339b6",
-                    "name": {
-                        "en": "Add Mutton Tripe(Big)",
-                        "zh": "加羊杂（大份）"
-                    },
-                    "count": 1
-                }
-            ],
-            "itemDiscount": "",
-            "itemPrice": "",
-            "itemTax": [
-                {
-                    "_id": "5649569f72c6892bf008df4c",
-                    "code": "service",
-                    "rate": "0.1",
-                    "name": {
-                        "en": "Service Tax",
-                        "zh": "Service Tax"
-                    },
-                    "isInclude": false,
-                    "fixed": true,
-                    "order": 1,
-                    "enable": true
-                },
-                {
-                    "_id": "5649569f72c6892bf008df4d",
-                    "code": "gst",
-                    "rate": "0",
-                    "name": {
-                        "en": "GST",
-                        "zh": "GST"
-                    },
-                    "isInclude": false,
-                    "fixed": true,
-                    "order": 2,
-                    "enable": true
-                }
-            ],
-            "menuPrice": "4.0",
-            "isDeleted": 0,
-            "modifierAmount": 0,
-            "groupNumber": 0,
-            "count": 1,
-            "allowCustomDiscount": false,
-            "addTaxAmount": 0,
-            "action": 0
+          "enable" : true,
+          "effectOrderTypes" : "",
+          "amount" : "",
+          "taxId" : "56b021d8f2180c67b8ea9836",
+          "fixed" : true,
+          "afterDiscount" : 0,
+          "code" : "gst",
+          "order" : 2,
+          "precondition" : "",
+          "rate" : "0.07",
+          "isInclude" : false,
+          "free" : false,
+          "name" : {
+            "en_US" : "GST",
+            "zh_CN" : "GST"
+          }
         }
-    ],
-    "orderDiscount": "",
-    "round": "",
-    "orderNo": "",
-    "payPrice": "",
-    "payment": {
-        "amount": "",
-        "transactionNo": "",
-        "status": 0,
-        "paymentMethod": 0
-    },
-    "remark": "",
-    "orderId": 0,
-    "status": 0,
-    "isReview": 0,
-    "isPaid": 0,
-    "isOrdered": 0,
-    "customerNum": 0,
-    "type": 2,
-    "cancelledBy": 0
+      ],
+      "allowCustomDiscount" : true,
+      "count" : 1,
+      "setNeedsPrint" : 0,
+      "discountAmount" : "0",
+      "priceAdjustment" : "0",
+      "action" : 0,
+      "name" : {
+        "en_US" : "Grilled W",
+        "zh_CN" : "Grilled W"
+      },
+      "orderDiscount" : "0",
+      "modifierAmount" : "",
+      "menuItemId" : "56b0380df2180c67b8eb4310",
+      "itemPrice" : "0",
+      "itemDiscount" : 0,
+      "menuPrice" : "32.0",
+      "orderItemId" : "",
+      "identification" : 1,
+      "modifier" : [
+
+      ],
+      "groupNumber" : 999,
+      "remark" : ""
+    }
+  ],
+  "cancelledBy" : 0,
+  "setNeedsUpload" : 0,
+  "tips" : "",
+  "contactName" : "",
+  "menuId" : "",
+  "createdStamp" : "",
+  "round" : 0
 }

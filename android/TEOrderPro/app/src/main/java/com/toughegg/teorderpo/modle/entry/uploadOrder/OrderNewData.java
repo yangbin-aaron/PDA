@@ -23,7 +23,7 @@ public class OrderNewData implements Serializable {
     private List<Item> item;
     private int orderId;
     private String discountAmount;
-    private String totalServiceTax;
+//    private String totalServiceTax;
     private String tableCode;
     private int isPaid;
     private String payPrice;
@@ -114,13 +114,13 @@ public class OrderNewData implements Serializable {
         this.discountAmount = discountAmount;
     }
 
-    public String getTotalServiceTax() {
-        return totalServiceTax;
-    }
-
-    public void setTotalServiceTax(String totalServiceTax) {
-        this.totalServiceTax = totalServiceTax;
-    }
+//    public String getTotalServiceTax() {
+//        return totalServiceTax;
+//    }
+//
+//    public void setTotalServiceTax(String totalServiceTax) {
+//        this.totalServiceTax = totalServiceTax;
+//    }
 
     public String getTableCode() {
         return tableCode;

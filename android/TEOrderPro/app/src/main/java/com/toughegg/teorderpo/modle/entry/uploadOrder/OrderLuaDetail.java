@@ -1,51 +1,63 @@
-package com.toughegg.teorderpo.modle.entry.ordernetdefail;
+package com.toughegg.teorderpo.modle.entry.uploadOrder;
+
+import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultData;
+import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultDataItem;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * 网络订单详情
- * Created by toughegg on 15/12/2.
+ * LMS内部订单详情模板,只供计算和打印用
+ * Created by toughegg on 16/3/28.
+ * Aaron
  */
-public class OrderNetResultData implements Serializable {
+public class OrderLuaDetail {
     private int id;//来自AWS的订单id
-    private String addTax;//总税额，sum(item.addTaxAmount * count)
-    private String address;  //可选，订单送货地址
-    private String basePrice;//原始价格，所有item的 basePrice * count 的总和
-    private String cancelRemark;// 取消说明
-    private int cancelledBy;//取消人id （0表示是顾客，其它表示店员)
-    private String contactName;//手机App使用，订单联系人
-    private String contactNum;//手机App使用，订单联系电话
-    private String createdStamp;// 创建时间
-    private int customerNum;//用餐人数
-    private String diningDataTime;//用餐时间
-    private String discountAmount;//折扣优惠金额，sum(item.discountAmount * count)
-    private String discountPrice;//不含税的折后价格，sum(item.itemPrice * count)
-    private boolean fromYami; //是否来自yami的订单(手机下的单)
-    private boolean isRead;//餐厅是否已经读过此单(仅LMS使用)
+    private String addTax;    //总税额，sum(item.addTaxAmount * count)
+    private String address;   //联系人地址
+    private String basePrice; //原始价格，所有item的 basePrice * count 的总和
+    private String cancelRemark; //取消说明
+    private int cancelledBy;     //取消人id （0表示是顾客，其它表示店员)
+    private Cancel cancel;//取消操作信息
+    private String contactName;  //联系人
+    private String contactNum;   //联系电话
+    private String createdStamp;   //创建时间
+    private int customerNum;     //用餐人数
+    private String diningDateTime; //用餐时间
+    private String discountAmount; //折扣优惠金额，sum(item.discountAmount * count)
+    private String discountPrice; //不含税的折后价格，sum(item.itemPrice * count)
+    private boolean fromYami;   //是否来自yami的订单(手机下的单)
+    private boolean isRead;    //餐厅是否已经读过此单(仅LMS使用)
     private int maxGroupNumber; //当前最大GroupNumber(仅LMS使用)
     private int maxOrderItemId; //当前最大OrderItemId(仅LMS使用)
     private int memberId;       //会员id
     private String menuId;      //菜单id
-    private boolean merchantConfirmed;//餐厅是否已经确认接收此订单
-    private int operatorId;//操作店员账号id
-    private String orderDiscount;//整单折扣率
-    private String orderNo; // 订单编号
-    private String payPrice; //订单应付金额
-    private String remark;// 订单备注
-    private String restId;// 餐厅id
-    private String round;//现金付款为了取整而调整的金额
-    private int status;//订单状态（0新增，1取消，2已付款，3完成，4已退款）
+    private boolean merchantConfirmed; //餐厅是否已经确认接收此订单
+    private int operatorId;       //操作店员账号id
+    private String operatorName; // 操作员 名词；
+    private String orderDiscount; //整单折扣率
+    private String orderNo;       //订单号
+    private String payPrice;      //订单应付金额
+    private String remark;        //备注
+    private String restId;        //餐厅id
+    private String round;         //现金付款为了取整而调整的金额
+    private int status; //订单状态 0 新增订单,1 已经取消, 2 已付款, 3 已经完成, 4 已经退款, 5 商家已经确认接收订单, 6 订单过期失效(目前商家拒收也会置为此状态)
     private boolean setNeedsUpload;//是否需要提交以生成报表, true表示尚未提交, false表示已提交
-    private String tableCode;//桌号
-    private String tableId;//餐桌id
-    private String takeAwayNo;//打包单单号
+    private String tableCode;  //桌号
+    private String tableId;    //餐桌id
+    private String takeAwayNo; //打包单单号
     private String totalGst;   //商户端自用的gst数额显示
-    private int type; //订单类型（1堂食，2打包，3预定）
-    private String updatedStamp;//更新时间
-    private String tips;// 小费
-    private Payment payment;//订单的支付信息
-    private Refund refund;//订单的退款信息，如果尚未退款，就保持为null
+    private String totalService; // 总的Service Charge 服务税
+    private String didTableCode; // 换桌旧桌号；  默认为空字符 ''
+    private int type;          //订单类型（1堂食，2打包，3预定）
+    private String updatedStamp; //更新时间
+    private boolean setNeedsPrint;  //是否需要打印//以前使用的是    isChangeForDish;; // 是否有菜品改变
+    private String tips;       //小费
+    private boolean isTotalOrder;//判断是否是总单（程序里面用来使用的字段，打印需要调用）
+    private String cashRounding;//判断到底要不要取整
+    private String roundingRule;//取整规则 [key]:[value],[key]:[value]... key是付款尾数,value是取整动作
+    private OrderNetResultData.Payment payment;//付款信息
+    private OrderNetResultData.Refund mRefund;// 退款信息
     private List<OrderNetResultDataItem> item;
 
     public int getId () {
@@ -96,6 +108,14 @@ public class OrderNetResultData implements Serializable {
         this.cancelledBy = cancelledBy;
     }
 
+    public Cancel getCancel () {
+        return cancel;
+    }
+
+    public void setCancel (Cancel cancel) {
+        this.cancel = cancel;
+    }
+
     public String getContactName () {
         return contactName;
     }
@@ -128,12 +148,12 @@ public class OrderNetResultData implements Serializable {
         this.customerNum = customerNum;
     }
 
-    public String getDiningDataTime () {
-        return diningDataTime;
+    public String getDiningDateTime () {
+        return diningDateTime;
     }
 
-    public void setDiningDataTime (String diningDataTime) {
-        this.diningDataTime = diningDataTime;
+    public void setDiningDateTime (String diningDateTime) {
+        this.diningDateTime = diningDateTime;
     }
 
     public String getDiscountAmount () {
@@ -214,6 +234,14 @@ public class OrderNetResultData implements Serializable {
 
     public void setOperatorId (int operatorId) {
         this.operatorId = operatorId;
+    }
+
+    public String getOperatorName () {
+        return operatorName;
+    }
+
+    public void setOperatorName (String operatorName) {
+        this.operatorName = operatorName;
     }
 
     public String getOrderDiscount () {
@@ -312,6 +340,22 @@ public class OrderNetResultData implements Serializable {
         this.totalGst = totalGst;
     }
 
+    public String getTotalService () {
+        return totalService;
+    }
+
+    public void setTotalService (String totalService) {
+        this.totalService = totalService;
+    }
+
+    public String getDidTableCode () {
+        return didTableCode;
+    }
+
+    public void setDidTableCode (String didTableCode) {
+        this.didTableCode = didTableCode;
+    }
+
     public int getType () {
         return type;
     }
@@ -328,6 +372,14 @@ public class OrderNetResultData implements Serializable {
         this.updatedStamp = updatedStamp;
     }
 
+    public boolean isSetNeedsPrint () {
+        return setNeedsPrint;
+    }
+
+    public void setSetNeedsPrint (boolean setNeedsPrint) {
+        this.setNeedsPrint = setNeedsPrint;
+    }
+
     public String getTips () {
         return tips;
     }
@@ -336,20 +388,44 @@ public class OrderNetResultData implements Serializable {
         this.tips = tips;
     }
 
-    public Payment getPayment () {
+    public boolean isTotalOrder () {
+        return isTotalOrder;
+    }
+
+    public void setIsTotalOrder (boolean isTotalOrder) {
+        this.isTotalOrder = isTotalOrder;
+    }
+
+    public String getCashRounding () {
+        return cashRounding;
+    }
+
+    public void setCashRounding (String cashRounding) {
+        this.cashRounding = cashRounding;
+    }
+
+    public String getRoundingRule () {
+        return roundingRule;
+    }
+
+    public void setRoundingRule (String roundingRule) {
+        this.roundingRule = roundingRule;
+    }
+
+    public OrderNetResultData.Payment getPayment () {
         return payment;
     }
 
-    public void setPayment (Payment payment) {
+    public void setPayment (OrderNetResultData.Payment payment) {
         this.payment = payment;
     }
 
-    public Refund getRefund () {
-        return refund;
+    public OrderNetResultData.Refund getRefund () {
+        return mRefund;
     }
 
-    public void setRefund (Refund refund) {
-        this.refund = refund;
+    public void setRefund (OrderNetResultData.Refund refund) {
+        mRefund = refund;
     }
 
     public List<OrderNetResultDataItem> getItem () {
@@ -362,18 +438,19 @@ public class OrderNetResultData implements Serializable {
 
     @Override
     public String toString () {
-        return "OrderNetResultData{" +
+        return "OrderLuaDetail{" +
                 "id=" + id +
                 ", addTax='" + addTax + '\'' +
                 ", address='" + address + '\'' +
                 ", basePrice='" + basePrice + '\'' +
                 ", cancelRemark='" + cancelRemark + '\'' +
                 ", cancelledBy=" + cancelledBy +
+                ", cancel=" + cancel +
                 ", contactName='" + contactName + '\'' +
                 ", contactNum='" + contactNum + '\'' +
                 ", createdStamp='" + createdStamp + '\'' +
                 ", customerNum=" + customerNum +
-                ", diningDataTime='" + diningDataTime + '\'' +
+                ", diningDateTime='" + diningDateTime + '\'' +
                 ", discountAmount='" + discountAmount + '\'' +
                 ", discountPrice='" + discountPrice + '\'' +
                 ", fromYami=" + fromYami +
@@ -384,6 +461,7 @@ public class OrderNetResultData implements Serializable {
                 ", menuId='" + menuId + '\'' +
                 ", merchantConfirmed=" + merchantConfirmed +
                 ", operatorId=" + operatorId +
+                ", operatorName='" + operatorName + '\'' +
                 ", orderDiscount='" + orderDiscount + '\'' +
                 ", orderNo='" + orderNo + '\'' +
                 ", payPrice='" + payPrice + '\'' +
@@ -394,35 +472,30 @@ public class OrderNetResultData implements Serializable {
                 ", setNeedsUpload=" + setNeedsUpload +
                 ", tableCode='" + tableCode + '\'' +
                 ", tableId='" + tableId + '\'' +
-                ", takeAwayNo=" + takeAwayNo +
+                ", takeAwayNo='" + takeAwayNo + '\'' +
                 ", totalGst='" + totalGst + '\'' +
+                ", totalService='" + totalService + '\'' +
+                ", didTableCode='" + didTableCode + '\'' +
                 ", type=" + type +
                 ", updatedStamp='" + updatedStamp + '\'' +
+                ", setNeedsPrint=" + setNeedsPrint +
                 ", tips='" + tips + '\'' +
+                ", isTotalOrder=" + isTotalOrder +
+                ", cashRounding='" + cashRounding + '\'' +
+                ", roundingRule='" + roundingRule + '\'' +
                 ", payment=" + payment +
-                ", refund=" + refund +
+                ", mRefund=" + mRefund +
                 ", item=" + item +
                 '}';
     }
 
-
-    // -----------------------------------Payment--------------------------------------
-
-    /**
-     * 收款类
-     */
-    public static class Payment implements Serializable {
-        private int id;            //来自AWS的付款id
-        private int operatorId;    //收款人id
-        private String invoiceNo;  //唯一的收据号
-        private int paymentMethod;//支付方式
-        private String amount;//应收总金额(含小费)
-        private String received;   //实收金额
-        private boolean setNeedsPrint;  //是否需要打印
-        private String change;     //找零金额
-        private int status;//付款状态（0未付款，1已付款）
-        private String createdStamp;
-        private String updatedStamp;
+    // -------------------------------cancel---------------------------------
+    public static class Cancel implements Serializable {
+        private int id; //来自AWS的id
+        private int operatorId;       //取消人id （0表示是顾客，其它表示店员)
+        private String operatorName; //操作员名字
+        private String cancelReason; //取消原因说明
+        private String createdStamp; //取消时间
 
         public int getId () {
             return id;
@@ -440,60 +513,20 @@ public class OrderNetResultData implements Serializable {
             this.operatorId = operatorId;
         }
 
-        public String getInvoiceNo () {
-            return invoiceNo;
+        public String getOperatorName () {
+            return operatorName;
         }
 
-        public void setInvoiceNo (String invoiceNo) {
-            this.invoiceNo = invoiceNo;
+        public void setOperatorName (String operatorName) {
+            this.operatorName = operatorName;
         }
 
-        public int getPaymentMethod () {
-            return paymentMethod;
+        public String getCancelReason () {
+            return cancelReason;
         }
 
-        public void setPaymentMethod (int paymentMethod) {
-            this.paymentMethod = paymentMethod;
-        }
-
-        public String getAmount () {
-            return amount;
-        }
-
-        public void setAmount (String amount) {
-            this.amount = amount;
-        }
-
-        public String getReceived () {
-            return received;
-        }
-
-        public void setReceived (String received) {
-            this.received = received;
-        }
-
-        public boolean isSetNeedsPrint () {
-            return setNeedsPrint;
-        }
-
-        public void setSetNeedsPrint (boolean setNeedsPrint) {
-            this.setNeedsPrint = setNeedsPrint;
-        }
-
-        public String getChange () {
-            return change;
-        }
-
-        public void setChange (String change) {
-            this.change = change;
-        }
-
-        public int getStatus () {
-            return status;
-        }
-
-        public void setStatus (int status) {
-            this.status = status;
+        public void setCancelReason (String cancelReason) {
+            this.cancelReason = cancelReason;
         }
 
         public String getCreatedStamp () {
@@ -504,132 +537,16 @@ public class OrderNetResultData implements Serializable {
             this.createdStamp = createdStamp;
         }
 
-        public String getUpdatedStamp () {
-            return updatedStamp;
-        }
-
-        public void setUpdatedStamp (String updatedStamp) {
-            this.updatedStamp = updatedStamp;
-        }
-
         @Override
         public String toString () {
-            return "Payment{" +
+            return "Cancel{" +
                     "id=" + id +
                     ", operatorId=" + operatorId +
-                    ", invoiceNo='" + invoiceNo + '\'' +
-                    ", paymentMethod=" + paymentMethod +
-                    ", amount='" + amount + '\'' +
-                    ", received='" + received + '\'' +
-                    ", setNeedsPrint=" + setNeedsPrint +
-                    ", change='" + change + '\'' +
-                    ", status=" + status +
+                    ", operatorName='" + operatorName + '\'' +
+                    ", cancelReason='" + cancelReason + '\'' +
                     ", createdStamp='" + createdStamp + '\'' +
-                    ", updatedStamp='" + updatedStamp + '\'' +
                     '}';
         }
     }
 
-    // -----------------------------------Refund--------------------------------------
-
-    /**
-     * 退款类
-     */
-    public static class Refund implements Serializable {
-        private int id; //来自AWS的退款id
-        private int operatorId;     //退款人id
-        private int refundMethod;    //退款方式，和付款方式的范围相同
-        private int status;//退款状态（申请退款，完成退款）
-        private String amount;//退款金额
-        private int refundedBy;//退款操作人（店员）
-        private String refundeason;//退款原因说明
-        private String updatedStamp, createdStamp;
-
-        public int getId () {
-            return id;
-        }
-
-        public void setId (int id) {
-            this.id = id;
-        }
-
-        public int getOperatorId () {
-            return operatorId;
-        }
-
-        public void setOperatorId (int operatorId) {
-            this.operatorId = operatorId;
-        }
-
-        public int getRefundMethod () {
-            return refundMethod;
-        }
-
-        public void setRefundMethod (int refundMethod) {
-            this.refundMethod = refundMethod;
-        }
-
-        public int getStatus () {
-            return status;
-        }
-
-        public void setStatus (int status) {
-            this.status = status;
-        }
-
-        public String getAmount () {
-            return amount;
-        }
-
-        public void setAmount (String amount) {
-            this.amount = amount;
-        }
-
-        public int getRefundedBy () {
-            return refundedBy;
-        }
-
-        public void setRefundedBy (int refundedBy) {
-            this.refundedBy = refundedBy;
-        }
-
-        public String getRefundeason () {
-            return refundeason;
-        }
-
-        public void setRefundeason (String refundeason) {
-            this.refundeason = refundeason;
-        }
-
-        public String getUpdatedStamp () {
-            return updatedStamp;
-        }
-
-        public void setUpdatedStamp (String updatedStamp) {
-            this.updatedStamp = updatedStamp;
-        }
-
-        public String getCreatedStamp () {
-            return createdStamp;
-        }
-
-        public void setCreatedStamp (String createdStamp) {
-            this.createdStamp = createdStamp;
-        }
-
-        @Override
-        public String toString () {
-            return "Refund{" +
-                    "id=" + id +
-                    ", operatorId=" + operatorId +
-                    ", refundMethod=" + refundMethod +
-                    ", status=" + status +
-                    ", amount='" + amount + '\'' +
-                    ", refundedBy='" + refundedBy + '\'' +
-                    ", refundeason='" + refundeason + '\'' +
-                    ", updatedStamp=" + updatedStamp +
-                    ", createdStamp=" + createdStamp +
-                    '}';
-        }
-    }
 }

@@ -199,7 +199,7 @@ public class TableActivity extends BaseActivity implements OnTopActionBarClickLi
     private void initTopActionBar () {
         mMyTopActionBar = (MyTopActionBar) findViewById (R.id.top_action_bar);
         if (isOpenMergeFunction) {
-            mMyTopActionBar.setRightTextView (R.string.main_right_top_str);
+            mMyTopActionBar.setRightTextView (R.string.main_right_top_merge_str);
         } else {
             mMyTopActionBar.setRightClick (false);
         }
@@ -251,7 +251,7 @@ public class TableActivity extends BaseActivity implements OnTopActionBarClickLi
         initIndicator ();
     }
 
-    // 设置top 提示到文字
+    // 设置top 提示文字
     private void initIndicator () {
         ILoadingLayout startLabels = mTableGridView.getLoadingLayoutProxy (true, false);
         startLabels.setPullLabel (getResources ().getString (R.string.refresh_remain));// 刚下拉时，显示的提示
@@ -499,7 +499,7 @@ public class TableActivity extends BaseActivity implements OnTopActionBarClickLi
         mMessageTextView.setText (R.string.main_button_str_message);
         mSettingTextView.setText (R.string.main_button_str_setting);
         if (isOpenMergeFunction) {
-            mMyTopActionBar.setRightTextView (R.string.main_right_top_str);
+            mMyTopActionBar.setRightTextView (R.string.main_right_top_merge_str);
         } else {
             mMyTopActionBar.setRightClick (false);
         }
@@ -509,6 +509,7 @@ public class TableActivity extends BaseActivity implements OnTopActionBarClickLi
     }
 
     private void showShowCheckBox () {
+        mDialog = DialogUtils.createLoadingDialog (this, R.string.app_please_wait);
         if (isShowCheckBox) {
             mTableGridViewAdapter.setIsShowCheckBox (isShowCheckBox, isMergeOrUnmerge);
             mSelectBtnLayout.setVisibility (View.VISIBLE);
@@ -521,24 +522,23 @@ public class TableActivity extends BaseActivity implements OnTopActionBarClickLi
             for (TableResultData tableResultData : mTableResultDataList) {
                 tableResultData.setIsSelected (false);// 恢复数据，如果立即点拼桌按钮，数据会更新不及时
             }
-            mTableGridViewAdapter.setTableInfos (mTableResultDataList);
 
             boolean flag = false;
             if (isMergeOrUnmerge) {
                 if (mMergeTableIdList.size () > 1) {// 拼桌
                     flag = true;
-                    mDialog = DialogUtils.createLoadingDialog (this, R.string.app_please_wait);
                     mDialog.show ();
                     mITablePresenter.merge (this, mMergeTableIdList);
                 } //else {// 取消拼桌
             } else {
                 if (mUnmergeTableId != null && !mUnmergeTableId.equals ("")) {
                     flag = true;
-                    mDialog = DialogUtils.createLoadingDialog (this, R.string.app_please_wait);
                     mDialog.show ();
                     mITablePresenter.unMerge (this, mUnmergeTableId);
                 }
             }
+            mTableGridViewAdapter.setTableInfos (mTableResultDataList);
+
             // 开启线程，获取实时数据
             if (flag) {// 为true时，merge或者unmerge后都会返回一次数据，防止数据重复，所以延时操作
                 mHandler.postDelayed (runnable, LOAD_TIME_INTERVAL);

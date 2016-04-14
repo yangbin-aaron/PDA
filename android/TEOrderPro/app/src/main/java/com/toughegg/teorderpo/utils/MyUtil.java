@@ -2,7 +2,6 @@ package com.toughegg.teorderpo.utils;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,6 @@ import com.toughegg.teorderpo.modle.entry.Name;
 import com.toughegg.teorderpo.modle.entry.dishMenu.Option;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultDataItem;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultItemModifier;
-import com.toughegg.teorderpo.view.dialogs.DialogUtils;
 
 import java.util.List;
 
@@ -288,27 +286,9 @@ public class MyUtil {
         TEOrderPoApplication application = (TEOrderPoApplication) context.getApplicationContext ();
         Log.e ("hcc", "TEOrderPoConstans.URL_LUA + application.restaurantDetailDataResult.getSetting ().getCalculatePolicy ()-->>\n"
                 + TEOrderPoConstans.URL_LUA + "\n" + application.restaurantDetailDataResult.getSetting ().getCalculatePolicy ());
-        downLoadFile.execute (TEOrderPoConstans.URL_LUA + application.restaurantDetailDataResult.getSetting ().getCalculatePolicy ());
+        downLoadFile.execute ("https://toughegg-development.s3.cn-north-1.amazonaws.com.cn/files/cd92890ccc07458ed6324556bfa9a4d0/4444.zip");
+//        downLoadFile.execute (TEOrderPoConstans.URL_LUA + application.restaurantDetailDataResult.getSetting ().getCalculatePolicy ());
 //        downLoadFile.execute (application.restaurantDetailDataResult.getSetting ().getCalculatePolicy ());
-    }
-
-    /**
-     * 封装  处理访问网络获得的消息
-     * @param context
-     * @param msg
-     */
-    public static void handlerSendMessage(Context context,Message msg){
-        switch (msg.what){
-            case TEOrderPoConstans.HANDLER_WHAT_POST_FAIL:
-                DialogUtils.createErrorDialog (context, (String) msg.obj);
-                break;
-            case TEOrderPoConstans.HANDLER_WHAT_SERVICE_CONNECTION_FAIL:
-                DialogUtils.createErrorDialog (context, R.string.app_service_is_not_connected);
-                break;
-            case TEOrderPoConstans.HANDLER_WHAT_NET_ERROR:
-                DialogUtils.createErrorDialog (context, R.string.app_net_date_error);
-                break;
-        }
     }
 }
 

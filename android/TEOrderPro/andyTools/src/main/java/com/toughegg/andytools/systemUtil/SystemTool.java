@@ -358,6 +358,8 @@ public class SystemTool {
             config.locale = Locale.SIMPLIFIED_CHINESE;
         } else if (language.equals ("zh_tw")) {// 繁体中文
             config.locale = Locale.TAIWAN;
+        }else if (language.equals ("ko_kr")){
+            config.locale = Locale.KOREA;
         }
         resources.updateConfiguration (config, dm);
     }

@@ -1,0 +1,109 @@
+{
+    "addTax": 0,
+    "address": "",
+    "basePrice": "0",
+    "cancelledBy": 0,
+    "contactName": "",
+    "contactNum": "",
+    "createdStamp": "",
+    "customerNum": 2,
+    "didTableCode": "",
+    "diningDateTime": "",
+    "discountAmount": "0",
+    "discountPrice": "0",
+    "fromYami": 0,
+    "isPaid": false,
+    "isRead": 0,
+    "isTotalOrder": 0,
+    "item": [
+        {
+            "action": 0,
+            "addTaxAmount": 0,
+            "allowCustomDiscount": true,
+            "basePrice": "0",
+            "code": "RC",
+            "count": 1,
+            "discountAmount": "0",
+            "groupNumber": 999,
+            "identification": 1,
+            "isDeleted": false,
+            "isHot": false,
+            "itemDiscount": 0,
+            "itemPrice": "0",
+            "itemTax": [
+                {
+                    "amount": 0,
+                    "code": "service",
+                    "enable": true,
+                    "fixed": true,
+                    "free": false,
+                    "name": {
+                        "en_US": "Service Tax",
+                        "zh_CN": "Service Tax"
+                    },
+                    "order": 1,
+                    "rate": "0.1",
+                    "taxId": "56b021d8f2180c67b8ea9835"
+                },
+                {
+                    "amount": 0,
+                    "code": "gst",
+                    "enable": true,
+                    "fixed": true,
+                    "free": false,
+                    "name": {
+                        "en_US": "GST",
+                        "zh_CN": "GST"
+                    },
+                    "order": 2,
+                    "rate": "0.07",
+                    "taxId": "56b021d8f2180c67b8ea9836"
+                }
+            ],
+            "menuItemId": "56b0380df2180c67b8eb4310",
+            "menuPrice": "32.0",
+            "modifier": [],
+            "modifierAmount": 0,
+            "name": {
+                "en_US": "Grilled W",
+                "zh_CN": "Grilled W"
+            },
+            "orderDiscount": "0",
+            "orderItemId": "",
+            "priceAdjustment": "0",
+            "remark": "",
+            "setNeedsPrint": 0
+        }
+    ],
+    "memberId": 0,
+    "menuId": 0,
+    "merchantConfirmed": 0,
+    "operatorId": "75",
+    "operatorName": "BT_Manager2",
+    "orderDiscount": "0",
+    "orderId": 0,
+    "orderNo": "",
+    "payPrice": "0",
+    "payment": {
+        "amount": "0",
+        "change": 0,
+        "invoiceNo": "",
+        "paymentMethod": 2,
+        "received": 0,
+        "status": 0
+    },
+    "remark": "",
+    "restId": "56b021d8f2180c67b8ea9832",
+    "round": 0,
+    "setNeedsPrint": false,
+    "setNeedsUpload": 0,
+    "status": 0,
+    "tableCode": "6",
+    "tableId": "56bbe929f2180c24275b10bb",
+    "takeAwayNo": "0",
+    "tips": "",
+    "totalGst": "0",
+    "totalService": "0",
+    "type": 1,
+    "updatedStamp": ""
+}

@@ -6,6 +6,7 @@ import java.util.List;
  * Created by Andy on 16/2/22.
  */
 public class PrintPriceOptionList {
+
     private int sortno;
     private List<String> name;
     private String price_option_id;

@@ -9,21 +9,29 @@ import java.io.Serializable;
  * Created by toughegg on 15/12/2.
  */
 public class OrderNetResultItemModifier implements Serializable {
-
-//    "count": 1,
-//    "modifierId": "56497f3172c68923b40333c0",
-//    "modifierOptionId": "5649818272c68923b40339af",
-//    "name": {
-//    "en": "Add Mutton Tripe",
-//    "zh": "\u52a0\u7f8a\u6742"
-//    },
-//    "unitPrice": "3.0"
-
-    private int count ;
+    private int id;//来自AWS的id
     private String modifierId;
     private String modifierOptionId;
+    private int count;
     private Name name;
     private String unitPrice;
+    private String createdStamp;
+
+    public int getId () {
+        return id;
+    }
+
+    public void setId (int id) {
+        this.id = id;
+    }
+
+    public String getCreatedStamp () {
+        return createdStamp;
+    }
+
+    public void setCreatedStamp (String createdStamp) {
+        this.createdStamp = createdStamp;
+    }
 
     public int getCount () {
         return count;
@@ -68,11 +76,13 @@ public class OrderNetResultItemModifier implements Serializable {
     @Override
     public String toString () {
         return "OrderNetResultItemModifier{" +
-                "count=" + count +
+                "id=" + id +
                 ", modifierId='" + modifierId + '\'' +
                 ", modifierOptionId='" + modifierOptionId + '\'' +
+                ", count=" + count +
                 ", name=" + name +
                 ", unitPrice='" + unitPrice + '\'' +
+                ", createdStamp='" + createdStamp + '\'' +
                 '}';
     }
 }

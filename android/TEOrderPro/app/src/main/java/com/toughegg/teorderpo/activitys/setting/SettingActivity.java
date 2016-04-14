@@ -29,7 +29,6 @@ import com.toughegg.teorderpo.activitys.LoginActivity;
 import com.toughegg.teorderpo.mvp.mvppresenter.SettingPresenterImp;
 import com.toughegg.teorderpo.mvp.mvppresenter.SettingPresenterInf;
 import com.toughegg.teorderpo.mvp.mvpview.ISettingView;
-import com.toughegg.teorderpo.utils.MyUtil;
 import com.toughegg.teorderpo.view.MyTopActionBar;
 import com.toughegg.teorderpo.view.MyTopActionBar.OnTopActionBarClickListener;
 import com.toughegg.teorderpo.view.dialogs.DialogUtils;
@@ -85,8 +84,14 @@ public class SettingActivity extends BaseActivity implements OnTopActionBarClick
                         DialogUtils.createErrorDialog (SettingActivity.this, R.string.app_load_fail);
                     }
                     break;
-                default:
-                    MyUtil.handlerSendMessage (SettingActivity.this, msg);
+                case TEOrderPoConstans.HANDLER_WHAT_NET_CONNECTION_FAIL:
+                    DialogUtils.createErrorDialog (SettingActivity.this, R.string.app_network_is_not_connected);
+                    break;
+                case TEOrderPoConstans.HANDLER_WHAT_SERVICE_CONNECTION_FAIL:
+                    DialogUtils.createErrorDialog (SettingActivity.this, R.string.app_service_is_not_connected);
+                    break;
+                case TEOrderPoConstans.HANDLER_WHAT_NET_ERROR:
+                    DialogUtils.createErrorDialog (SettingActivity.this, R.string.app_net_date_error);
                     break;
             }
         }

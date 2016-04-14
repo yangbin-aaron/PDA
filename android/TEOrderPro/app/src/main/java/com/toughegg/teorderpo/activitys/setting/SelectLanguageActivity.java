@@ -65,6 +65,8 @@ public class SelectLanguageActivity extends BaseActivity implements MyTopActionB
         mLanguageList.add (languageZh);
         Language languageZhTw = new Language ("繁體中文", R.string.app_lang_zh_tw, TEOrderPoConstans.LANGUAGE_CHINESE_TW, false);
         mLanguageList.add (languageZhTw);
+        Language languageKoKR = new Language ("한글", R.string.app_lang_ko_kr, TEOrderPoConstans.LANGUAGE_KOREAN_KR, false);
+        mLanguageList.add (languageKoKR);
         for (int i = 0; i < mLanguageList.size (); i++) {
             Language language = mLanguageList.get (i);
             for (int j = 0; j < langList.length; j++) {
@@ -75,7 +77,7 @@ public class SelectLanguageActivity extends BaseActivity implements MyTopActionB
                     break;
                 }
             }
-            if (marCount >= 2) {
+            if (marCount >= 2) {// 已经限制只能选择两种语言，所以找到两种语言匹配之后，无需验证剩余其他的了
                 break;
             }
         }

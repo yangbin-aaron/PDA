@@ -1,6 +1,6 @@
 <resources>
     <!-- App相关string-->
-    <string name="app_name">点菜宝</string>
+    <string name="app_name">点菜宝31_TEST</string>
     <string name="actionbar_left_str">&lt;</string>
     <string name="app_network_is_not_connected">请检查您的网络连接</string>
     <string name="app_service_is_not_connected">服务器断开</string>
@@ -35,7 +35,7 @@
     <string name="main_button_str_takeaway">打包</string>
     <string name="main_button_str_message">消息</string>
     <string name="main_button_str_setting">设置</string>
-    <string name="main_right_top_str">拼桌</string>
+    <string name="main_right_top_merge_str">拼桌</string>
 
     <!-- SelectPeopleActivity相关-->
     <string name="select_people_title_str">选择人数</string>
@@ -68,6 +68,7 @@
     <string name="order_detail_str_discountamount">折扣</string>
     <string name="order_detail_str_consumptiontax">GST</string>
     <string name="order_detail_str_round">Round</string>
+    <string name="order_detail_str_tips">小费</string>
     <string name="order_detail_str_addprice">加价:</string>
     <string name="order_detail_str_discount">折扣:</string>
     <string name="order_detail_str_servicetax">服务税</string>
@@ -177,6 +178,7 @@
     <string name="app_lang_en">英语</string>
     <string name="app_lang_zh">简体中文</string>
     <string name="app_lang_zh_tw">繁体中文</string>
+    <string name="app_lang_ko_kr">韩文</string>
 
     <!-- 账户信息-->
     <string name="activity_userinfo_resttime">营业时间:</string>

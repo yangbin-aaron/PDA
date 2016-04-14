@@ -1,0 +1,80 @@
+{
+  "restaurant_fk":"5649569e72c6892bf008df49",
+  "startDatetime" : "20 Jul 2015",
+  "endDatetime" : "20 Jul 2015",
+  "currentDatetime":"20 Jul 2015",
+  "cash" : "80.50",
+  "sales_amt":"0.00",
+  "cash_in_drawer" :"0.00",
+  "cash_difference":"0.00",
+  "total_dish_count":"0",
+  "total_no_of_pax":"0",
+  "total_amt":"0.00",
+  "net_sales":"0.00",
+  "svc_chrg":"0.00",
+  "taxable_amt":"0.00",
+  "gst":"0.00",
+  "gross_amt":"0.00",
+  "discount":"0.00",
+  "rounding":"0.00",
+  "net_amt":"0.00",
+  "yami_top_up":"0.00",
+  "void_count":"0",
+  "void_amt":"0.00",
+  "refund_count":"0",
+  "refund_amt":"0.00",
+  "tips":"0.00",
+  "cancel_count":"0",
+  "cancel_amt":"0.00",
+  "receipt":"0",
+  "start_no":"0",
+  "end_no":"0",
+  "count":"0",
+  "turnover":"0",
+
+  "goodsResources" : [
+    {
+      "Type" : "Menu",
+      "TotalPrice" : "48.00",
+      "Quantity" : "10",
+      "Code" : "1A",
+      "MenuTitle" : "1A Ginger Moo\n"
+    },
+    {
+      "Type" : "Menu",
+      "TotalPrice" : "9.00",
+      "Quantity" : "2",
+      "Code" : "1F",
+      "MenuTitle" : "1F Mango w Sago\n"
+    },
+    {
+      "Type" : "Menu",
+      "TotalPrice" : "6.00",
+      "Quantity" : "1",
+      "Code" : "1M3",
+      "MenuTitle" : "1M3 Sweet in Heart w ltalian Grass Jelly\n"
+    },
+    {
+      "Type" : "Menu",
+      "TotalPrice" : "5.50",
+      "Quantity" : "1",
+      "Code" : "1C",
+      "MenuTitle" : "1C Mango w lce-cream\n"
+    },
+    {
+      "Type" : "Menu",
+      "TotalPrice" : "5.50",
+      "Quantity" : "1",
+      "Code" : "1D",
+      "MenuTitle" : "1D Mango w Herbal Jelly"
+    },
+    {
+      "Type" : "Menu",
+      "TotalPrice" : "6.50",
+      "Quantity" : "1",
+      "Code" : "1H",
+      "MenuTitle" : "1H Mango w Black Glutinous Rice\n"
+    }
+  ]
+  
+}

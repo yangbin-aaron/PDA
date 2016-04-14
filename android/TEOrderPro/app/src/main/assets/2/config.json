@@ -1,0 +1,61 @@
+{
+   
+        "Open_box":{
+            "bar": false,
+            "cash": false,
+            "kitchen": false,
+            "receipt": true
+        },
+        
+        "payment": {
+            "bar": false,
+            "cash": false,
+            "kitchen": false,
+            "receipt": true
+        },
+        "print_order": {
+            "bar": true,
+            "cash": true,
+            "kitchen": true,
+            "receipt": true
+        },
+        "reprint": {
+            "bar": false,
+            "cash": false,
+            "kitchen": false,
+            "receipt": true
+        },
+        
+        "print_report":{
+            "bar": false,
+            "cash": false,
+            "kitchen": false,
+            "receipt": true
+        },
+
+        "cancel_order":{
+            "bar": true,
+            "cash": true,
+            "kitchen": true,
+            "receipt": true
+        },
+        "all_print":{
+            "bar": true,
+            "cash": true,
+            "kitchen": true,
+            "receipt": true
+        },
+        "cancel_order_pay":{
+            "bar": true,
+            "cash": true,
+            "kitchen": true,
+            "receipt": true
+        },
+        "change_table":{
+            "bar": true,
+            "cash": true,
+            "kitchen": true,
+            "receipt": true
+        }
+    
+}

@@ -1,6 +1,6 @@
 <resources>
     <!-- App相关string-->
-    <string name="app_name">PDA</string>
+    <string name="app_name">PDA31_TEST</string>
     <string name="actionbar_left_str">&lt;</string>
     <string name="app_network_is_not_connected">Check Internet connection</string>
     <string name="app_service_is_not_connected">Server disconnect</string>
@@ -35,7 +35,7 @@
     <string name="main_button_str_takeaway">TakeAway</string>
     <string name="main_button_str_message">Message</string>
     <string name="main_button_str_setting">Setting</string>
-    <string name="main_right_top_str">Mer</string>
+    <string name="main_right_top_merge_str">Mer</string>
 
     <!-- SelectPeopleActivity相关-->
     <string name="select_people_title_str">No. Of Pax</string>
@@ -68,6 +68,7 @@
     <string name="order_detail_str_discountamount">Disc</string>
     <string name="order_detail_str_consumptiontax">GST</string>
     <string name="order_detail_str_round">Round</string>
+    <string name="order_detail_str_tips">Tips</string>
     <string name="order_detail_str_addprice">Add Price:</string>
     <string name="order_detail_str_discount">Discount:</string>
     <string name="order_detail_str_servicetax">Service Charge</string>
@@ -181,6 +182,7 @@
     <string name="app_lang_en">English</string>
     <string name="app_lang_zh">Chinese,Simplified</string>
     <string name="app_lang_zh_tw">Chinese,Traditional</string>
+    <string name="app_lang_ko_kr">Korean</string>
 
     <!-- 账户信息-->
     <string name="activity_userinfo_resttime">Opening Hours:</string>

@@ -126,8 +126,6 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
             mIsReadSuccess = true;
             HashMap.Entry entry = (HashMap.Entry) iterator.next ();
             String key = (String) entry.getKey ();
-            String ip = (String) entry.getValue ();
-            Log.e ("aaron", "Addprinter>>>>>>>>>>>>>>>>>" + key + " -- " + ip);
             if (key.equals (TEOrderPoConstans.RECEIPT)) {
                 findViewById (R.id.activity_add_printer_receipt_linearlayout).setVisibility (View.VISIBLE);
                 findViewById (R.id.activity_add_printer_receipt_line).setVisibility (View.VISIBLE);
@@ -151,7 +149,7 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
         }
     }
 
-    private void initReceipt () {// 收据
+    private void initReceipt () {
         receiptPrinterItemsListView = (SwipeMenuListView) findViewById (R.id.activity_add_printer_receipt_items_layout);
         receiptIPStringList = new ArrayList<> ();//ip 地址数据初始化
         String strCashList = SharePrefenceUtils.readString (this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans.RECEIPT);
@@ -172,7 +170,7 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
         swipeOnClickListener (receiptPrinterItemsListView, receiptIPStringList, receiptAdapter, TEOrderPoConstans.RECEIPT);
     }
 
-    private void initKitchen () {// 厨房1
+    private void initKitchen () {
         kitchenPrinterItemsListView = (SwipeMenuListView) findViewById (R.id.activity_add_printer_kitchen_items_layout);
         kitchenIPStringList = new ArrayList<> ();
         String strKitchenList = SharePrefenceUtils.readString (this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans.KITCHEN);
@@ -193,10 +191,10 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
         swipeOnClickListener (kitchenPrinterItemsListView, kitchenIPStringList, kitchenAdapter, TEOrderPoConstans.KITCHEN);
     }
 
-    private void initKitchen2 () {// 厨房2
+    private void initKitchen2 () {
         kitchenPrinterItemsListView2 = (SwipeMenuListView) findViewById (R.id.activity_add_printer_cash_items_layout);
         kitchenIPStringList2 = new ArrayList<> ();
-        String strKitchen2List = SharePrefenceUtils.readString (this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans.CASH);
+        String strKitchen2List = SharePrefenceUtils.readString (this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans.BAR);
         if (strKitchen2List != null) {
             try {
                 kitchenIPStringList2 = SharePrefenceUtils.string2SceneList (strKitchen2List);
@@ -210,15 +208,15 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
         kitchenAdapter2 = new SwipeItemAdapter (AddPrinterActivity.this, kitchenIPStringList2);
         kitchenPrinterItemsListView2.setAdapter (kitchenAdapter2);
         IsShowAdd (kitchenIPStringList2.size (), kitchenPrinterLayout2);
-        swipeListener (kitchenPrinterItemsListView2, kitchenIPStringList2, kitchenAdapter2, TEOrderPoConstans.CASH);
-        swipeOnClickListener (kitchenPrinterItemsListView2, kitchenIPStringList2, kitchenAdapter2, TEOrderPoConstans.CASH);
+        swipeListener (kitchenPrinterItemsListView2, kitchenIPStringList2, kitchenAdapter2, TEOrderPoConstans.BAR);
+        swipeOnClickListener (kitchenPrinterItemsListView2, kitchenIPStringList2, kitchenAdapter2, TEOrderPoConstans.BAR);
     }
 
 
-    private void initCounter () {// 吧台
+    private void initCounter () {
         counterPrinterItemsListView = (SwipeMenuListView) findViewById (R.id.activity_add_printer_counter_items_layout);
         counterIPStringList = new ArrayList<> ();
-        String strBarList = SharePrefenceUtils.readString (AddPrinterActivity.this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans.BAR);
+        String strBarList = SharePrefenceUtils.readString (AddPrinterActivity.this, TEOrderPoConstans.SHAREPREFERENCE_NAME, TEOrderPoConstans.CASH);
         if (strBarList != null) {
             try {
                 counterIPStringList = SharePrefenceUtils.string2SceneList (strBarList);
@@ -232,8 +230,8 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
         counterAdapter = new SwipeItemAdapter (this, counterIPStringList);
         counterPrinterItemsListView.setAdapter (counterAdapter);
         IsShowAdd (counterIPStringList.size (), counterPrinterLayout);
-        swipeListener (counterPrinterItemsListView, counterIPStringList, counterAdapter, TEOrderPoConstans.BAR);
-        swipeOnClickListener (counterPrinterItemsListView, counterIPStringList, counterAdapter, TEOrderPoConstans.BAR);
+        swipeListener (counterPrinterItemsListView, counterIPStringList, counterAdapter, TEOrderPoConstans.CASH);
+        swipeOnClickListener (counterPrinterItemsListView, counterIPStringList, counterAdapter, TEOrderPoConstans.CASH);
     }
 
     private void swipeOnClickListener (final SwipeMenuListView swipeMenuListView, final List<String> ipStringList, final SwipeItemAdapter
@@ -310,11 +308,11 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
     @Override
     public void onClick (View v) {
         switch (v.getId ()) {
-            case R.id.activity_add_printer_receipt_add_tv:// 收据
+            case R.id.activity_add_printer_receipt_add_tv:
                 verifyIP (receiptEditText, receiptIPStringList, receiptAdapter, TEOrderPoConstans.RECEIPT);
                 IsShowAdd (receiptIPStringList.size (), receiptPrinterLayout);
                 break;
-            case R.id.activity_add_printer_kitchen_add_tv:// 厨房1
+            case R.id.activity_add_printer_kitchen_add_tv:
                 verifyIP (kitchenEditText, kitchenIPStringList, kitchenAdapter, TEOrderPoConstans.KITCHEN);
                 IsShowAdd (kitchenIPStringList.size (), kitchenPrinterLayout);
                 break;
@@ -374,10 +372,9 @@ public class AddPrinterActivity extends BaseActivity implements OnTopActionBarCl
         //保存数据
         try {
             String ipStr = SharePrefenceUtils.sceneList2String (ipStringList);
-            Log.e ("aaron", "Addprinter>>>>>>>>>>>>>>>>>" + ipStr);
+            Log.e ("aaron", ">>>>>>>>>>>>>>>>>" + ipStr);
             SharePrefenceUtils.write (AddPrinterActivity.this, TEOrderPoConstans.SHAREPREFERENCE_NAME, printIpName, ipStr);
         } catch (Exception e) {
-            Log.e ("aaron", "Addprinter>>>>>>>>>>>>>>>>>" + e.getMessage ());
             e.printStackTrace ();
         }
     }

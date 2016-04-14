@@ -72,7 +72,7 @@
             android:gravity="center"
             android:text="拼桌"
             android:textColor="@color/color_white"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/actionbar_top_right_imageView"

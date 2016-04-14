@@ -23,23 +23,21 @@
         android:textColor="@color/color_gray_dark"/>
 
     <ImageView
+        android:id="@+id/app_logo_imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edittext_layout"
+        android:layout_below="@+id/activity_login_tosetip_textview"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/login_head"/>
 
-    <LinearLayout
-        android:id="@+id/edittext_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_below="@+id/app_logo_imageview"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginRight="50dp">
 
         <EditText
             android:id="@+id/activity_login_merchant_id"
@@ -57,6 +55,7 @@
             android:id="@+id/activity_login_user_id"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/btn_height"
+            android:layout_below="@+id/activity_login_merchant_id"
             android:layout_marginTop="@dimen/activity_all_padding_top"
             android:background="@color/color_white"
             android:gravity="center"
@@ -69,6 +68,7 @@
             android:id="@+id/activity_login_password"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/btn_height"
+            android:layout_below="@+id/activity_login_user_id"
             android:layout_marginTop="@dimen/activity_all_padding_top"
             android:background="@color/color_white"
             android:gravity="center"
@@ -81,13 +81,49 @@
             android:id="@+id/activity_login_login_btn"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/btn_height"
+            android:layout_below="@+id/activity_login_password"
             android:layout_marginTop="@dimen/activity_all_padding_top"
             android:background="@drawable/title_touch_color"
             android:gravity="center"
             android:text="@string/activity_login_login_btn"
             android:textColor="@color/color_white"
             android:textSize="@dimen/text_size_big"/>
-    </LinearLayout>
+
+        <!-- 商户账号记忆列表-->
+        <RelativeLayout
+            android:id="@+id/activity_login_merchant_id_layout"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_below="@+id/activity_login_merchant_id"
+            android:layout_marginTop="1dp"
+            android:background="@color/color_white"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/activity_login_merchant_id_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/activity_login_merchant_id_clear_textView"
+                android:layout_marginBottom="1dp"
+                android:background="@color/color_white"
+                android:visibility="visible"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/activity_login_merchant_id_clear_textView"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/activity_login_merchant_id_clear_textView"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="清除记录"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <!-- 版本信息 -->
     <LinearLayout
@@ -97,7 +133,9 @@
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:orientation="vertical">
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/activity_login_version_text"

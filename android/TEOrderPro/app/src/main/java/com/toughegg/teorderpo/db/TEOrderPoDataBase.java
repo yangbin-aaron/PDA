@@ -83,34 +83,6 @@ public class TEOrderPoDataBase {
 
 
     //------------------dish Info 菜品信息----------------------------------------
-
-//            "_id": "563b1a52f04ada66e729d918",
-//            "categoryId": "563acd21f04ada66e729d396",
-//            "name": {
-//                  "zh": "菜品 20",
-//                  "en": "DISH 20"
-//              },
-//            "code": "B9",
-//            "price": "12.0",
-//            "isRec": true,
-//            "isSet": true,
-//            "isHot": false,
-//            "hotFactor": 20,
-//            "display": true,
-//            "deleted": false,
-//            "allowCustomDiscount": true,
-//            "canTakeAway": true,
-//            "order": 20,
-//            "fromDate": "2015-11-11T00:00:00.000Z",
-//            "toDate": "2015-11-13T23:59:59.000Z",
-//            "description": {
-//        "zh": "中文中文中文中文",
-//                "en": "englishenglishenglishenglishenglishenglishenglishenglishenglishenglishenglish"
-//    },
-//            "modifier": [],
-//            "img": "images/3dc120d81acd4039a9b594c9463909b2/reward-img.jpg"
-//}
-
     public static final String DISH_INFO_TABLE_NAME = "dish_info_table";
     public static final String DISH_ID = "dish_id";
     public static final String DISH_CATEGORY_ID = "dish_category_id";
@@ -219,6 +191,10 @@ public class TEOrderPoDataBase {
     public static final String ITEM_TAX_FIXED = "item_tax_fixed";
     public static final String ITEM_TAX_ORDER = "item_tax_order";
     public static final String ITEM_TAX_CODE = "item_tax_code";
+    public static final String ITEM_TAX_EFFECTORDERTYPES = "item_tax_effectOrderTypes";
+    public static final String ITEM_TAX_AFTERDISCOUNT = "item_tax_afterDiscount";
+    public static final String ITEM_TAX_PRECONDITION = "item_tax_precondition";
+    public static final String ITEM_TAX_AMOUNT = "item_tax_amount";
 
 
     public TEOrderPoDataBase (Context mContext) {
@@ -313,8 +289,19 @@ public class TEOrderPoDataBase {
                         TABLE_TABLELIST_ORDERNO + " TEXT," + TABLE_TABLELIST_PAYPRICE + " TEXT," + TABLE_TABLELIST_PAYMENTSTATUS + " INTEGER," +
                         TABLE_TABLELIST_ORDERSTATUS + " INTEGER)";
                 mSQLiteDatabase.execSQL (createTableTableListSql);
+
+                // 添加字段 itemTax
+                String alter1 = "alter table " + ITEM_TAX_TABLE + " add " + ITEM_TAX_AFTERDISCOUNT + "  BLOB;";
+                mSQLiteDatabase.execSQL (alter1);
+                String alter2 = "alter table " + ITEM_TAX_TABLE + " add " + ITEM_TAX_EFFECTORDERTYPES + " TEXT;";
+                mSQLiteDatabase.execSQL (alter2);
+                String alter3 = "alter table " + ITEM_TAX_TABLE + " add " + ITEM_TAX_PRECONDITION + " TEXT;";
+                mSQLiteDatabase.execSQL (alter3);
+                String alter4 = "alter table " + ITEM_TAX_TABLE + " add " + ITEM_TAX_AMOUNT + " TEXT;";
+                mSQLiteDatabase.execSQL (alter4);
+
+                mSQLiteDatabase.setVersion (DB_VERSION_NUMBER);
             }
-            mSQLiteDatabase.setVersion (DB_VERSION_NUMBER);
         }
     }
 

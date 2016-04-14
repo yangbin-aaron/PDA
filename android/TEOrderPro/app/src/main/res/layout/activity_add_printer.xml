@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--receipt 1 部分  收据-->
+            <!--receipt 1 部分-->
             <LinearLayout
                 android:id="@+id/activity_add_printer_receipt_linearlayout"
                 android:layout_width="fill_parent"
@@ -106,7 +106,7 @@
                 android:background="@color/color_gray_deep_l"
                 android:visibility="gone"/>
 
-            <!--厨房1 -->
+            <!--厨房 -->
             <LinearLayout
                 android:id="@+id/activity_add_printer_kitchen_linearlayout"
                 android:layout_width="fill_parent"

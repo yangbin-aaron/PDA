@@ -19,7 +19,6 @@ import com.toughegg.teorderpo.db.TEOrderPoDataBase;
 import com.toughegg.teorderpo.db.TEOrderPoDataBaseHelp;
 import com.toughegg.teorderpo.modle.entry.APIStatusResult;
 import com.toughegg.teorderpo.modle.entry.JsonEntry;
-import com.toughegg.teorderpo.modle.entry.Name;
 import com.toughegg.teorderpo.modle.entry.dishMenu.DishCategory;
 import com.toughegg.teorderpo.modle.entry.dishMenu.DishItems;
 import com.toughegg.teorderpo.modle.entry.dishMenu.DishMenuResult;
@@ -29,7 +28,6 @@ import com.toughegg.teorderpo.modle.entry.dishMenu.Option;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResult;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultData;
 import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultDataItem;
-import com.toughegg.teorderpo.modle.entry.ordernetdefail.OrderNetResultItemModifier;
 import com.toughegg.teorderpo.modle.entry.restaurantdetail.RestaurantDetailResult;
 import com.toughegg.teorderpo.modle.entry.tablelist.TableResult;
 import com.toughegg.teorderpo.modle.entry.tablelist.TableResultData;
@@ -83,7 +81,7 @@ public class TEProNetWorkService {
     /**
      * 登陆
      */
-    public void login (final Context mContext, UserInfo userInfo, final Handler mHandler) {
+    public void login (final Context mContext, final UserInfo userInfo, final Handler mHandler) {
         final Dialog dialog = DialogUtils.createLoadingDialog (mContext, R.string.activity_login_loading);
         mPreferences = mContext.getApplicationContext ().getSharedPreferences (TEOrderPoConstans.SHAREPREFERENCE_NAME, Context.MODE_PRIVATE);
         String ip = mPreferences.getString (TEOrderPoConstans.SP_SERVICE_IP, "");
@@ -127,12 +125,15 @@ public class TEProNetWorkService {
                         SharedPreferences.Editor editor = preference.edit ();
                         editor.putString (TEOrderPoConstans.SP_LOGIN_TOKEN, mUserLoginResult.getToken ());
                         editor.putString (TEOrderPoConstans.SP_LOGIN_REST_ID, mUserLoginResult.getData ().getRestId ());
-                        editor.putString (TEOrderPoConstans.SP_LOGIN_EMPLOYEE_ID, mUserLoginResult.getData ().getEmployeeId ());
                         editor.putString (TEOrderPoConstans.SP_LOGIN_EMAIL, mUserLoginResult.getData ().getEmail ());
                         editor.putString (TEOrderPoConstans.SP_LOGIN_GROUP_ID, mUserLoginResult.getData ().getGroupId ());
                         editor.putInt (TEOrderPoConstans.SP_LOGIN_STATUS, mUserLoginResult.getData ().getStatus ());
                         editor.putString (TEOrderPoConstans.SP_LOGIN_USER_ID, mUserLoginResult.getData ().getId ());
                         editor.putString (TEOrderPoConstans.SP_LOGIN_USERNAME, mUserLoginResult.getData ().getUsername ());
+                        editor.putString (TEOrderPoConstans.SP_LOGIN_EMPLOYEE_ID, mUserLoginResult.getData ().getEmployeeId ());// 登录的用户帐号
+                        editor.putString (TEOrderPoConstans.SP_LOGIN_REST_CODE, userInfo.getRestCode ());// 登录的商户帐号
+                        editor.putString (TEOrderPoConstans.SP_LOGIN_PASSWORD, userInfo.getPassword ());// 登录的用户密码
+                        editor.putBoolean (TEOrderPoConstans.SP_LOGIN_STATE, true);// 登录成功的状态
                         editor.commit ();
                         mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS).sendToTarget ();
                     } else {
@@ -181,7 +182,7 @@ public class TEProNetWorkService {
 
             @Override
             public void onResponse (final String response) {
-                Log.e ("aaron", "response-->>>getTableListing-->>" + response);
+//                Log.e ("aaron", "response-->>>getTableListing-->>" + response);
                 new Thread () {
                     @Override
                     public void run () {
@@ -263,20 +264,26 @@ public class TEProNetWorkService {
             }
 
             @Override
-            public void onResponse (String response) {
+            public void onResponse (final String response) {
                 Log.e ("aaron", TAG + "mergeTable>>>>>>" + response);
-                try {
-                    TableResult tableResult = gson.fromJson (response, TableResult.class);
-                    if (tableResult.getStatus () == 200) {
-                        updateTableListOfLocal (tableResult);
-                        mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS).sendToTarget ();
-                    } else {
-                        mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_FAIL, tableResult.getMessage ()).sendToTarget ();
+                new Thread () {
+                    @Override
+                    public void run () {
+                        super.run ();
+                        try {
+                            TableResult tableResult = gson.fromJson (response, TableResult.class);
+                            if (tableResult.getStatus () == 200) {
+                                updateTableListOfLocal (tableResult);
+                                mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS).sendToTarget ();
+                            } else {
+                                mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_FAIL, tableResult.getMessage ()).sendToTarget ();
+                            }
+                        } catch (Exception e) {
+                            mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_NET_ERROR).sendToTarget ();
+                            e.printStackTrace ();
+                        }
                     }
-                } catch (Exception e) {
-                    mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_NET_ERROR).sendToTarget ();
-                    e.printStackTrace ();
-                }
+                }.start ();
             }
 
             @Override
@@ -319,20 +326,26 @@ public class TEProNetWorkService {
             }
 
             @Override
-            public void onResponse (String response) {
+            public void onResponse (final String response) {
                 Log.e ("aaron", TAG + "mergeTable>>>>>>" + response);
-                try {
-                    TableResult tableResult = gson.fromJson (response, TableResult.class);
-                    if (tableResult.getStatus () == 200) {
-                        updateTableListOfLocal (tableResult);
-                        mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS).sendToTarget ();
-                    } else {
-                        mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_FAIL, tableResult.getMessage ()).sendToTarget ();
+                new Thread () {
+                    @Override
+                    public void run () {
+                        super.run ();
+                        try {
+                            TableResult tableResult = gson.fromJson (response, TableResult.class);
+                            if (tableResult.getStatus () == 200) {
+                                updateTableListOfLocal (tableResult);
+                                mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS).sendToTarget ();
+                            } else {
+                                mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_FAIL, tableResult.getMessage ()).sendToTarget ();
+                            }
+                        } catch (Exception e) {
+                            mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_NET_ERROR).sendToTarget ();
+                            e.printStackTrace ();
+                        }
                     }
-                } catch (Exception e) {
-                    mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_NET_ERROR).sendToTarget ();
-                    e.printStackTrace ();
-                }
+                }.start ();
             }
 
             @Override
@@ -430,7 +443,7 @@ public class TEProNetWorkService {
 
             @Override
             public void onResponse (final String response) {
-                Log.e ("aaron", "response-->>>getMenuData-->>" + response);
+//                Log.e ("aaron", "response-->>>getMenuData-->>" + response);
                 new Thread () {
                     @Override
                     public void run () {
@@ -656,55 +669,48 @@ public class TEProNetWorkService {
             }
 
             @Override
-            public void onResponse (String response) {
+            public void onResponse (final String response) {
                 Log.e ("aaron", TAG + "getOrderNetDetatil>>>>>>" + response);
-                try {
-                    OrderNetResult orderNetResult = gson.fromJson (response, OrderNetResult.class);
-                    if (orderNetResult.getStatus () == 200) {
-                        OrderNetResultData data = orderNetResult.getData ();
-                        OrderNetResultData dataHandler = orderNetResult.getData ();
-                        List<OrderNetResultDataItem> items = data.getItem ();
-                        List<OrderNetResultDataItem> tempItems = new ArrayList<OrderNetResultDataItem> ();
-                        for (OrderNetResultDataItem item : items) {
-                            // 从数据库查询出菜名
-                            DishItems dishItems = TEOrderPoDataBaseHelp.findDishInfoByDishId (item.getMenuItemId ());
-                            // 从数据库查询菜品的所属分类
-                            String categoryIds = null;
-                            for (int i = 0; i < dishItems.getCategoryId ().size (); i++) {
-                                if (i == dishItems.getCategoryId ().size () - 1) {
-                                    categoryIds += dishItems.getCategoryId ().get (i);
-                                } else {
-                                    categoryIds += dishItems.getCategoryId ().get (i) + ",";
-                                }
-                            }
-                            item.setCategoryId (categoryIds);
-                            if (dishItems != null) {
-                                Name diahName = dishItems.getName ();
-                                item.setName (diahName);
-                                List<OrderNetResultItemModifier> modifiers = item.getModifier ();
-                                List<OrderNetResultItemModifier> tempModifiers = new ArrayList<OrderNetResultItemModifier> ();
-                                for (OrderNetResultItemModifier modifier : modifiers) {
-                                    // 从数据库查询出加料的名称
-                                    Option option = TEOrderPoDataBaseHelp.findOptionById (modifier.getModifierId (), modifier.getModifierOptionId ());
-                                    if (option != null) {
-                                        modifier.setName (option.getName ());
-                                        tempModifiers.add (modifier);
+                new Thread () {
+                    @Override
+                    public void run () {
+                        super.run ();
+                        try {
+                            OrderNetResult orderNetResult = gson.fromJson (response, OrderNetResult.class);
+                            if (orderNetResult.getStatus () == 200) {
+                                OrderNetResultData data = orderNetResult.getData ();
+                                List<OrderNetResultDataItem> items = data.getItem ();
+                                List<OrderNetResultDataItem> tempItems = new ArrayList<OrderNetResultDataItem> ();
+                                for (OrderNetResultDataItem item : items) {
+                                    // 从数据库查询出菜名
+                                    DishItems dishItems = TEOrderPoDataBaseHelp.findDishInfoByDishId (item.getMenuItemId ());
+                                    if (dishItems != null) {
+                                        // 从数据库查询菜品的所属分类
+                                        String categoryIds = "";
+                                        for (int i = 0; i < dishItems.getCategoryId ().size (); i++) {
+                                            if (i == dishItems.getCategoryId ().size () - 1) {
+                                                categoryIds += dishItems.getCategoryId ().get (i);
+                                            } else {
+                                                categoryIds += dishItems.getCategoryId ().get (i) + ",";
+                                            }
+                                        }
+                                        item.setCategoryId (categoryIds);
+                                        tempItems.add (item);
                                     }
                                 }
-                                item.setModifier (tempModifiers);
-                                tempItems.add (item);
+                                data.setItem (tempItems);
+                                application.orderNetResultData = data;
+                                mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS, createOrderNetData (data, items)).sendToTarget
+                                        ();
+                            } else {
+                                mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_FAIL, orderNetResult.getMessage ()).sendToTarget ();
                             }
+                        } catch (Exception e) {
+                            mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_NET_ERROR).sendToTarget ();
+                            e.printStackTrace ();
                         }
-                        data.setItem (tempItems);
-                        application.orderNetResultData = data;
-                        mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_SUCCESS, dataHandler).sendToTarget ();
-                    } else {
-                        mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_POST_FAIL, orderNetResult.getMessage ()).sendToTarget ();
                     }
-                } catch (Exception e) {
-                    mHandler.obtainMessage (TEOrderPoConstans.HANDLER_WHAT_NET_ERROR).sendToTarget ();
-                    e.printStackTrace ();
-                }
+                }.start ();
             }
 
             @Override
@@ -712,6 +718,50 @@ public class TEProNetWorkService {
                 super.onAfter ();
             }
         });
+    }
+
+    private OrderNetResultData createOrderNetData (OrderNetResultData data, List<OrderNetResultDataItem> items) {
+        OrderNetResultData dataHandler = new OrderNetResultData ();
+        dataHandler.setItem (items);
+        dataHandler.setId (data.getId ());
+        dataHandler.setAddTax (data.getAddTax ());
+        dataHandler.setAddress (data.getAddress ());
+        dataHandler.setBasePrice (data.getBasePrice ());
+        dataHandler.setCancelRemark (data.getCancelRemark ());
+        dataHandler.setCancelledBy (data.getCancelledBy ());
+        dataHandler.setContactName (data.getContactName ());
+        dataHandler.setContactNum (data.getContactNum ());
+        dataHandler.setCreatedStamp (data.getCreatedStamp ());
+        dataHandler.setCustomerNum (data.getCustomerNum ());
+        dataHandler.setDiningDataTime (data.getDiningDataTime ());
+        dataHandler.setDiscountAmount (data.getDiscountAmount ());
+        dataHandler.setDiscountPrice (data.getDiscountPrice ());
+        dataHandler.setFromYami (data.isFromYami ());
+        dataHandler.setIsRead (data.isRead ());
+        dataHandler.setMaxGroupNumber (data.getMaxGroupNumber ());
+        dataHandler.setMaxOrderItemId (data.getMaxOrderItemId ());
+        dataHandler.setMemberId (data.getMemberId ());
+        dataHandler.setMenuId (data.getMenuId ());
+        dataHandler.setMerchantConfirmed (data.isMerchantConfirmed ());
+        dataHandler.setOperatorId (data.getOperatorId ());
+        dataHandler.setOrderDiscount (data.getOrderDiscount ());
+        dataHandler.setOrderNo (data.getOrderNo ());
+        dataHandler.setPayPrice (data.getPayPrice ());
+        dataHandler.setRemark (data.getRemark ());
+        dataHandler.setRestId (data.getRestId ());
+        dataHandler.setRound (data.getRound ());
+        dataHandler.setStatus (data.getStatus ());
+        dataHandler.setSetNeedsUpload (data.isSetNeedsUpload ());
+        dataHandler.setTableCode (data.getTableCode ());
+        dataHandler.setTableId (data.getTableId ());
+        dataHandler.setTakeAwayNo (data.getTakeAwayNo ());
+        dataHandler.setTotalGst (data.getTotalGst ());
+        dataHandler.setType (data.getType ());
+        dataHandler.setUpdatedStamp (data.getUpdatedStamp ());
+        dataHandler.setTips (data.getTips ());
+        dataHandler.setPayment (data.getPayment ());
+        dataHandler.setRefund (data.getRefund ());
+        return dataHandler;
     }
 
     /**
@@ -881,7 +931,7 @@ public class TEProNetWorkService {
     // 更新数据网络
     public void checkUpdateVersion (final Handler mHandler) {
         final Gson gson = new Gson ();
-        String url = "http://api.fir.im/apps/latest/com.toughegg.teorderpo?api_token=e103f9d18df32d73dec4335cf8b5d610&type=android";
+        String url = "http://api.fir.im/apps/latest/com.toughegg.teorderpo_test31?api_token=e103f9d18df32d73dec4335cf8b5d610&type=android";
         new OkHttpRequest.Builder ().url (url).get (new ResultCallback<String> () {
             @Override
             public void onBefore (Request request) {

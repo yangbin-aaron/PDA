@@ -325,6 +325,34 @@
                         android:textSize="16sp"/>
                 </RelativeLayout>
 
+                <!--  Tips-->
+                <RelativeLayout
+                    android:id="@+id/tips_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@color/white"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="@dimen/activity_all_padding_left"
+                    android:paddingRight="@dimen/activity_all_padding_right"
+                    android:paddingTop="2dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_detail_str_tips"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/activity_order_net_detail_tips_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="$ 0.00"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
 
                 <!-- 税后金额-->
                 <RelativeLayout

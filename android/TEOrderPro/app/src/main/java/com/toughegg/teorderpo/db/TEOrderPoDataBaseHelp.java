@@ -847,24 +847,20 @@ public class TEOrderPoDataBaseHelp {
         values.put (TEOrderPoDataBase.ITEM_TAX_NAME_EN, itemTax.getName ().getEn_US ());
         values.put (TEOrderPoDataBase.ITEM_TAX_NAME_ZH, itemTax.getName ().getZh_CN ());
         values.put (TEOrderPoDataBase.ITEM_TAX_ORDER, itemTax.getOrder ());
+        values.put (TEOrderPoDataBase.ITEM_TAX_EFFECTORDERTYPES, itemTax.getEffectOrderTypes ());
+        if (itemTax.getPrecondition ()==null){
+            itemTax.setPrecondition ("");
+        }
+        values.put (TEOrderPoDataBase.ITEM_TAX_PRECONDITION, itemTax.getPrecondition ());
+        if (itemTax.getAmount ()==null){
+            itemTax.setAmount ("");
+        }
+        values.put (TEOrderPoDataBase.ITEM_TAX_AMOUNT, itemTax.getPrecondition ());
+        values.put (TEOrderPoDataBase.ITEM_TAX_AFTERDISCOUNT, itemTax.isAfterDiscount ());
 
         SQLiteDatabase db = TEOrderPoDataBase.getInstance ().getSQLiteDatabase ();
 
-//        int id = -1;
-//        String sql = "select * from " + TEOrderPoDataBase.ITEM_TAX_TABLE + " where " + TEOrderPoDataBase.ITEM_TAX_ID + " = '" + itemTax
-//                .getId () + "'";
-//        Cursor c = TEOrderPoDataBase.getInstance ().rawQuery (sql);
-//        if (c.moveToFirst ()) {
-//            id = c.getInt (c.getColumnIndex (TEOrderPoDataBase.ITEM_TAX_ID));
-//        }
-//        //  判断是进行保存还是进行更新
-//        if (id == -1) {
         db.insert (TEOrderPoDataBase.ITEM_TAX_TABLE, null, values);
-//        } else {
-//            db.update (TEOrderPoDataBase.ITEM_TAX_TABLE, values, TEOrderPoDataBase.ITEM_TAX_ID + "=?", new String[]{String.valueOf
-//                    (itemTax.getId ())});
-//        }
-//        c.close ();
     }
 
     //  获取税率
@@ -886,6 +882,10 @@ public class TEOrderPoDataBaseHelp {
             name.setEn_US (c.getString (c.getColumnIndex (TEOrderPoDataBase.ITEM_TAX_NAME_EN)));
             name.setZh_CN (c.getString (c.getColumnIndex (TEOrderPoDataBase.ITEM_TAX_NAME_ZH)));
             mItemTax.setName (name);
+            mItemTax.setPrecondition (c.getString (c.getColumnIndex (TEOrderPoDataBase.ITEM_TAX_PRECONDITION)));
+            mItemTax.setEffectOrderTypes (c.getString (c.getColumnIndex (TEOrderPoDataBase.ITEM_TAX_EFFECTORDERTYPES)));
+            mItemTax.setAfterDiscount (c.getInt (c.getColumnIndex (TEOrderPoDataBase.ITEM_TAX_AFTERDISCOUNT)) == 1);
+
             itemTaxList.add (mItemTax);
         }
         c.close ();

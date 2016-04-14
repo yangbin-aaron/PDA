@@ -1,0 +1,161 @@
+{
+  "addTax" : "0",
+  "address" : "",
+  "basePrice" : "26.9",
+  "cancelledBy" : 0,
+  "contactName" : "",
+  "contactNum" : "",
+  "createdStamp" : "2016-03-22T16:14:57.152+0800",
+  "customerNum" : 1,
+  "didTableCode" : "",
+  "diningDateTime" : "2016-03-22T16:14:57.152+0800",
+  "discountAmount" : "0",
+  "discountPrice" : "0",
+  "id" : 0,
+  "isChangeForDish" : true,
+  "isOrdered" : 0,
+  "isPaid" : false,
+  "isRead" : 0,
+  "item" : [
+    {
+      "action" : 0,
+      "addTaxAmount" : "",
+      "allowCustomDiscount" : true,
+      "categoryId" : "",
+      "code" : "RC",
+      "count" : 1,
+      "groupNumber" : 1,
+      "isDeleted" : false,
+      "itemDiscount" : 0,
+      "itemPrice" : "",
+      "itemTax" : [
+        {
+          "amount" : "",
+          "code" : "service",
+          "enable" : true,
+          "fixed" : true,
+          "free" : 0,
+          "effectOrderTypes" : "1",
+          "isIncluded" : false,
+          "afterDiscount": true,
+          "name" : {
+            "en_US" : "Service Tax",
+            "zh_CN" : "Service Tax"
+          },
+          "rate" : "0.1",
+          "taxId" : "56b021d8f2180c67b8ea9835"
+        },
+        {
+          "amount" : "",
+          "code" : "gst",
+          "enable" : true,
+          "fixed" : true,
+          "free" : 0,
+          "effectOrderTypes" : "1",
+          "isIncluded" : true,
+          "afterDiscount": true,
+          "name" : {
+            "en_US" : "GST",
+            "zh_CN" : "GST"
+          },
+          "rate" : "0.07",
+          "taxId" : "56b021d8f2180c67b8ea9836"
+        }
+      ],
+      "menuItemId" : "56b0380df2180c67b8eb4311",
+      "menuPrice" : "17.0",
+      "modifier" : [],
+      "modifierAmount" : "",
+      "name" : {
+        "en_US" : "Grilled 1/2",
+        "zh_CN" : "Grilled 1/2"
+      },
+      "orderItemId" : "1",
+      "priceAdjustment" : 0,
+      "remark" : "",
+      "setNeedsPrint" : true
+    },
+    {
+      "action" : 0,
+      "addTaxAmount" : "",
+      "allowCustomDiscount" : false,
+      "categoryId" : "",
+      "code" : "LS",
+      "count" : 1,
+      "groupNumber" : 1,
+      "isDeleted" : false,
+      "itemDiscount" : 0,
+      "itemPrice" : "",
+      "itemTax" : [
+        {
+          "amount" : "",
+          "code" : "service",
+          "enable" : true,
+          "fixed" : true,
+          "free" : 0,
+          "effectOrderTypes" : "1",
+          "isIncluded" : true,
+          "afterDiscount": true,
+          "name" : {
+            "en_US" : "Service Tax",
+            "zh_CN" : "Service Tax"
+          },
+          "rate" : "0.1",
+          "taxId" : "56b021d8f2180c67b8ea9835"
+        },
+        {
+          "amount" : "",
+          "code" : "gst",
+          "enable" : true,
+          "fixed" : true,
+          "free" : 0,
+          "effectOrderTypes" : "2",
+          "isIncluded" : true,
+          "afterDiscount": true,
+          "name" : {
+            "en_US" : "GST",
+            "zh_CN" : "GST"
+          },
+          "rate" : "0.07",
+          "taxId" : "56b021d8f2180c67b8ea9836"
+        }
+      ],
+      "menuItemId" : "56b0380df2180c67b8eb4386",
+      "menuPrice" : "9.9",
+      "modifier" : [],
+      "modifierAmount" : "",
+      "name" : {
+        "en_US" : "Stir-fried",
+        "zh_CN" : "Stir-fried"
+      },
+      "orderItemId" : "2",
+      "priceAdjustment" : 0,
+      "remark" : "abc",
+      "setNeedsPrint" : true
+    }
+  ],
+  "operatorName" : "BT_Manager3",
+  "orderDiscount" : "",
+  "orderNo" : "002116032200005",
+  "payPrice" : 31.47,
+  "payment" : {
+    "amount" : "0",
+    "change" : "0",
+    "invoiceNo" : "",
+    "paymentMethod" : 2,
+    "received" : "0",
+    "status" : 0
+  },
+  "remark" : "",
+  "restId" : "56b021d8f2180c67b8ea9832",
+  "round" : "0",
+  "status" : 0,
+  "tableCode" : "7",
+  "tableId" : "56bbe936f2180c24275b10ca",
+  "takeAwayNo" : "1",
+  "tips" : "0",
+  "totalGst" : 1.88,
+  "totalService" : "2.69",
+  "type" : 1,
+  "updatedStamp" : "2016-03-22T16:17:48.281+0800"
+}
